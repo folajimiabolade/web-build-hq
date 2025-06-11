@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Testimonials{% endblock %}
+
+{% block head %}
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="testimonials-container">
+        <img class="testimonials-image" alt="a microphone and a recorder on a table" src="{{ url_for('static', filename='images/media-kit.jpg') }}">
+        <div class="testimonials-content">
+            <p class="testimonials-text text"><a class="testimonials-prompt" href="{{ url_for('sign_up') }}">Sign Up</a> to give WebBuildHQ a testimony.</p>
+            <h2 class="testimonials-text text testimonials-header">Testimonies</h2>
+            <p class="testimonials-text text testimonials-body">WebBuildHQ would like to build a website for you and have your testimony here...</p>
+            <a class=" text button whatsapp testimonials-button" type="button" href="https://wa.me/2347067681676">Whatsapp</a>
+        </div>
+    </div>
+{% endblock %}

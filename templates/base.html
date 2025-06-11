@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="{{ url_for('static', filename='images/laptop.svg') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>{% block title %}{% endblock %}</title>
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <div class="webbuild-container">
+        <div class="grid-item-1">
+            <!--  Navigation Bar  -->
+            <div class="navigation-container">
+                <a type="button" class="brand text" href="{{ url_for('home') }}">
+                    <svg class="logo bi bi-laptop" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                         viewBox="0 0 16 16">
+                        <path d="M13.5 3a.5.5 0 0 1 .5.5V11H2V3.5a.5.5 0 0 1 .5-.5zm-11-1A1.5 1.5 0 0 0 1 3.5V12h14V3.5A1.5 1.5 0 0 0 13.5 2zM0 12.5h16a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5"/>
+                    </svg>
+                    <p class="text brand-text"> WebBuildHQ</p>
+                </a>
+
+                <div class="links-container">
+                    <a type="button" class="home text nav-link" href="{{ url_for('home') }}">Home</a>
+                    <a type="button" class="about text nav-link" href="{{ url_for('about') }}">About</a>
+                    <a type="button" class="designs text nav-link" href="{{ url_for('designs') }}">Designs</a>
+                    <a type="button" class="testimonials text nav-link" href="{{ url_for('testimonials') }}">Testimonies</a>
+                    <a type="button" class="contact text nav-link" href="{{ url_for('contact') }}">Contact</a>
+                    {% if current_user.is_authenticated %}
+                    <a type="button" class="account text nav-link" href="{{ url_for('account') }}">Account</a>
+                    <a type="button" class="logout text nav-link" href="{{ url_for('logout') }}">Logout</a>
+                    {% else %}
+                    <a type="button" class="login text nav-link" href="{{ url_for('login') }}">Login</a>
+                    {% endif %}
+
+                </div>
+            </div>
+
+            {% block body %}{% endblock %}
+        </div>
+
+        <div class="grid-item-2">
+        <!--  Footer -->
+            <div class="footer">
+                <p class="copyright text">©WebBuildHQ</p>
+                <div class="brand">
+                    <a type="button" class="brand text" href="{{ url_for('home') }}">
+                    <svg class="footer-logo bi bi-laptop" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                         viewBox="0 0 16 16">
+                        <path d="M13.5 3a.5.5 0 0 1 .5.5V11H2V3.5a.5.5 0 0 1 .5-.5zm-11-1A1.5 1.5 0 0 0 1 3.5V12h14V3.5A1.5 1.5 0 0 0 13.5 2zM0 12.5h16a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5"/>
+                    </svg>
+                    <p class="text footer-brand-text"> WebBuildHQ</p>
+                </a>
+                </div>
+                <a class="footer-link text" href="https://wa.me/2347067681676">Whatsapp</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

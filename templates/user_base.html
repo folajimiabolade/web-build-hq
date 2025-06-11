@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}{% block user_title %}{% endblock %}{% endblock %}
+
+{% block head %}
+    <style>
+        @media(orientation: portrait) {
+
+            div.user-page::before {
+                content: "before pseudo element text";
+                color: transparent;
+                background-image: url({{ url_for('static', filename='images/phone-and-laptop.jpg') }});
+                position: fixed;
+                z-index: -1;
+                min-width: 100vw;
+                min-height: 100vh;
+                background-position: center;
+                background-size: cover;
+                background-attachment: fixed;
+                filter: brightness(0.2);
+                top: 0;
+            }
+
+            div.user-nav {
+                background: #2b3035;
+            }
+
+
+        }
+
+        @media(orientation: landscape) {
+
+            div.user-page::before {
+                content: "before pseudo element text";
+                color: transparent;
+                background-image: url({{ url_for('static', filename='images/phone-and-laptop.jpg') }});
+                position: fixed;
+                z-index: -1;
+                min-width: 100vw;
+                min-height: 150vw;
+                background-position: center;
+                background-size: cover;
+                background-attachment: fixed;
+                filter: brightness(0.2);
+                top: 0;
+            }
+
+            div.user-nav {
+                background: #2b3035;
+                min-height: 100vh;
+            }
+
+            div.user-body {
+                min-width: 85vw;
+            }
+
+        }
+
+    </style>
+    {% block user_head %}{% endblock %}
+{% endblock %}
+
+{% block body %}
+    <div class="user-page">
+        <div class="user-nav">
+            <a class="text user-link" type="button" href="{{ url_for('account') }}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1vw" height="1vw" fill="currentColor" class="bi bi-table user-svg" viewBox="0 0 16 16">
+                  <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm15 2h-4v3h4zm0 4h-4v3h4zm0 4h-4v3h3a1 1 0 0 0 1-1zm-5 3v-3H6v3zm-5 0v-3H1v2a1 1 0 0 0 1 1zm-4-4h4V8H1zm0-4h4V4H1zm5-3v3h4V4zm4 4H6v3h4z"/>
+                </svg><p class="nav-text">  Account</p>
+            </a>
+            <a class="text user-link" type="button" href="{{ url_for('settings') }}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1vw" height="1vw" fill="currentColor" class="bi bi-table user-svg" viewBox="0 0 16 16">
+                  <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm15 2h-4v3h4zm0 4h-4v3h4zm0 4h-4v3h3a1 1 0 0 0 1-1zm-5 3v-3H6v3zm-5 0v-3H1v2a1 1 0 0 0 1 1zm-4-4h4V8H1zm0-4h4V4H1zm5-3v3h4V4zm4 4H6v3h4z"/>
+                </svg><p class="nav-text">  Settings</p>
+            </a>
+        </div>
+
+        <div class="user-body">
+            {% block user_body %}{% endblock %}
+        </div>
+
+    </div>
+{% endblock %}

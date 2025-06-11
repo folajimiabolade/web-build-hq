@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block head %}
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="login-container">
+        <img class="login-image" alt="formal meeting" src=" {{ url_for('static', filename='images/formal-meeting.jpg') }}">
+        <div class="login-card">
+            <div class="login-form">
+                <form method="post" action="{{ url_for('login') }}">
+                    {{ form.csrf_token }}
+                    <p class="text login-label">Email</p>
+                    {{ form.email() }}
+                    <p class="text login-label">Password</p>
+                    {{ form.password() }}
+                    <br>
+                    <p class="text signup-prompt">Don't have an account yet?
+                        <a class="login-signup" href="{{ url_for('sign_up') }}">Sign Up</a>
+                    </p>
+                    {{ form.button() }}
+                    <!--  Flashed Messages  -->
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <p class="text login-flash">{{ message }}</p>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    <!--  End of Flashed Messages  -->
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

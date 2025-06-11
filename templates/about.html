@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}About{% endblock %}
+
+{% block head %}
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<!--  About  -->
+<div class="about-container">
+    <img class="about-image" alt="phone with a website on a table" src="{{ url_for('static', filename='images/phone-table.jpg') }}">
+    <div class="about-content">
+        <div class="about-text">
+            <h2 class="text">About</h2>
+            <p class="text about-body">
+                WebBuildHQ is a web development company that builds beautiful websites to your specification,
+                just pick a design from our various <a class="about-link" href="{{ url_for('designs') }}">
+                templates</a>, provide your pictures, your information
+                (Home, About, Goods/Services, Contact e.t.c) as text and we will add them to your chosen template(design),
+                choose a website name(domain name e.g. website.com) and we will help you set your website up on
+                the internet.
+            </p>
+        </div>
+        <div class="about-button-container">
+            <a class=" text button whatsapp about-button" type="button" href="https://wa.me/2347067681676">Whatsapp</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
