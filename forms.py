@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, EmailField, PasswordField, SubmitField, BooleanField, URLField
-from wtforms.validators import DataRequired, Length, Email, InputRequired
+from wtforms import StringField, EmailField, PasswordField, SubmitField, BooleanField, URLField, TextAreaField
+from wtforms.validators import DataRequired, Length, Email, InputRequired, URL
 
 
 class LoginForm(FlaskForm):
@@ -45,8 +45,13 @@ class SignupForm(FlaskForm):
 
 class TestimonyForm(FlaskForm):
     website = URLField(
-        label="URL of the website WebBuildHQ built for you e.g https://website.com",
-        validators=[DataRequired()],
-        render_kw={"class": "field", "value": "https://"}
+        label="URL of website built",
+        validators=[DataRequired(), URL()],
+        render_kw={"class": "field add-field website-url", "placeholder": "e.g. https://website.com"}
     )
-    # testimony =
+    testimony = TextAreaField(
+        label="Testimony",
+        validators=[DataRequired()],
+        render_kw={"class": "field add-field", "placeholder": "Your Testimony"}
+    )
+    button = SubmitField(label="Submit", render_kw={"class": "text button add-button"})

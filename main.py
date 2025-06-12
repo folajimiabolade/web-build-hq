@@ -1,12 +1,13 @@
 from flask import Flask, render_template, redirect, url_for, request, flash
-from forms import LoginForm, SignupForm
+from forms import LoginForm, SignupForm, TestimonyForm
 import os
 from flask_wtf.csrf import CSRFProtect
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
-from sqlalchemy import String, create_engine
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
+from sqlalchemy import String, Integer, DateTime, ForeignKey
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import LoginManager, login_user, logout_user, UserMixin, login_required
+from flask_login import LoginManager, login_user, logout_user, UserMixin, login_required, current_user
+from datetime import datetime, timezone
 
 
 class Base(DeclarativeBase):
@@ -26,11 +27,22 @@ db.init_app(app)
 
 class User(UserMixin, db.Model):
     __tablename__ = "users"
-    id: Mapped[int] = mapped_column(primary_key=True)
+    id: Mapped[int] = mapped_column(Integer(), primary_key=True)
     first_name: Mapped[str] = mapped_column(String())
     last_name: Mapped[str] = mapped_column(String())
     email: Mapped[str] = mapped_column(String(), unique=True)
     password: Mapped[str] = mapped_column(String())
+    testimonies = relationship("Testimony", back_populates="user")
+
+
+class Testimony(UserMixin, db.Model):
+    __tablename__ = "testimonies"
+    id: Mapped[int] = mapped_column(primary_key=True)
+    datetime: Mapped[datetime] = mapped_column(DateTime())
+    website: Mapped[str] = mapped_column(String())
+    testimony: Mapped[str] = mapped_column(String())
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
+    user = relationship("User", back_populates="testimonies")
 
 
 with app.app_context():
@@ -99,7 +111,6 @@ def sign_up():
     signup_form = SignupForm()
     if request.method == "POST":
         if signup_form.validate_on_submit():
-            print(request.form)
             data = request.form
             hashed_password = generate_password_hash(
                 password=data["password"],
@@ -128,6 +139,7 @@ def privacy_policy():
 @app.route("/account")
 @login_required
 def account():
+    print(current_user.testimonies)
     return render_template("account.html")
 
 
@@ -140,6 +152,54 @@ def logout():
 @app.route("/settings")
 def settings():
     return render_template("settings.html")
+
+
+@app.route("/add-testimony", methods=["GET", "POST"])
+def add_testimony():
+    testimony_form = TestimonyForm()
+    if request.method == "POST":
+        if testimony_form.validate_on_submit():
+            data = request.form
+            with app.app_context():
+                testimony = Testimony(
+                    datetime=datetime.now(timezone.utc),
+                    website=data["website"],
+                    testimony=data["testimony"],
+                    user_id = current_user.id
+                )
+                db.session.add(testimony)
+                db.session.commit()
+            return redirect(url_for("account"))
+    return render_template("add-testimony.html", form=testimony_form)
+
+
+@app.route("/edit-testimony/<int:i_d>", methods=["GET", "POST"])
+def edit_testimony(i_d):
+    testimony = db.session.execute(db.select(Testimony).where(Testimony.id == i_d)).scalar()
+    testimony_form = TestimonyForm(website=testimony.website, testimony=testimony.testimony)
+    if request.method == "POST":
+        if testimony_form.validate_on_submit():
+            data = request.form
+            with app.app_context():
+                testimony = db.session.execute(db.select(Testimony).where(Testimony.id == i_d)).scalar()
+                testimony.website = data["website"]
+                testimony.testimony = data["testimony"]
+                db.session.commit()
+            return redirect(url_for("account"))
+    return render_template("edit-testimony.html", i_d=i_d, form=testimony_form)
+
+
+@app.route("/confirm-delete/<int:i_d>")
+def confirm_delete(i_d):
+    pending_testimony = db.session.execute(db.select(Testimony).where(Testimony.id == i_d)).scalar()
+    return render_template("confirm-delete.html", testimony=pending_testimony)
+
+@app.route("/delete/<int:i_d>")
+def delete(i_d):
+    testimony = db.session.execute(db.select(Testimony).where(Testimony.id == i_d)).scalar()
+    db.session.delete(testimony)
+    db.session.commit()
+    return redirect(url_for("account"))
 
 
 if __name__ == "__main__":

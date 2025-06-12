@@ -63,15 +63,15 @@ a[type="button"] {
     }
 
     svg.logo {
-        width: 9vw;
-        height: 9vw;
+        width: 7.46vw;
+        height: 7.46vw;
         padding-left: 3.5vw;
         color: #E7F2E4;
         flex: 1;
         /* background: yellow; */
         flex-grow: 0;
-        min-height: 9vw;
-        min-width: 9vw;
+        min-height: 7.46vw;
+        min-width: 7.46vw;
 
     }
 
@@ -83,7 +83,7 @@ a[type="button"] {
         font-size: 6.25vw;
         white-space: pre;
         flex-grow: 0;
-
+        font-family: "Dancing Script", cursive;
     }
 
     div.links-container {
@@ -361,11 +361,11 @@ a[type="button"] {
     }
 
     svg.footer-logo {
-        width: 6.9vw;
-        height: 6.9vw;
+        width: 5.72vw;
+        height: 5.72vw;
         /* background: red; */
-        min-width: 6.9vw;
-        min-height: 6.9vw;
+        min-width: 5.72vw;
+        min-height: 5.72vw;
         margin: 0vw;
     }
 
@@ -376,6 +376,7 @@ a[type="button"] {
         padding: 0vw;
         max-height: 3.5vw;
         white-space: pre;
+        font-family: "Dancing Script", cursive;
     }
 
     a.footer-link {
@@ -622,8 +623,7 @@ a[type="button"] {
         white-space: pre;
     }
 
-    h2.testimonies-heading {
-        margin-left: 3.5vw;
+    h3.testimonies-heading {
         text-align: center;
         margin-top: 6vh;
     }
@@ -631,6 +631,7 @@ a[type="button"] {
     div.testimony-holder {
         display: flex;
         justify-content: center;
+        margin-bottom: 2vh;
     }
 
     div.testimony-unit{
@@ -690,6 +691,153 @@ a[type="button"] {
         white-space: pre;
     }
 
+    h2.add-title {
+        text-align: center;
+    }
+
+    input.add-button {
+        background: #0065F8;
+        border-radius: 1vw;
+        border: none;
+        padding: 1.5vh 3.6vw;
+        font-size: 2.6vw;
+        margin-top: 2vh;
+    }
+
+    div.add-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    label[for="website"], label[for="testimony"] {
+        font-family: "Noto Sans", sans-serif;
+        color: #EFEEEA;
+        font-size: 3vw;
+    }
+
+    input.add-field {
+        margin-top: 1vh;
+        margin-bottom: 2vh;
+    }
+
+    div.add-form {
+        padding: 2.4vh 4vw;
+        border: 1px solid #757575;
+        border-radius: 0.5vw;
+    }
+
+    p.add-instruction {
+        color: red;
+        margin-top: 0;
+        font-size: 2.6vw;;
+    }
+
+    textarea {
+        font-family: "Noto Sans", sans-serif;
+        background: transparent;
+        border: 1px solid #757575;
+        color: #EFEEEA;
+        border-radius: 1vw;
+        width: 40vw;
+        height: 30vh;
+        padding: 2vw 2.5vw;
+        font-size: 2.8vw;
+        resize: none;
+        margin-top: 1vh;
+    }
+
+    textarea::placeholder{
+        font-family: "Noto Sans", sans-serif;
+        color: #EFEEEA;
+        font-size: 2.6vw;
+        opacity: 0.5;
+    }
+
+    textarea:focus {
+        font-family: "Noto Sans", sans-serif;
+        color: #EFEEEA;
+        font-size: 2.8vw;
+        outline:none;
+    }
+
+    input::placeholder {
+        opacity: 0.5;
+    }
+
+    p.testimony-data {
+        word-break: break-word;
+    }
+
+    h3.delete-question {
+        text-align: center;
+    }
+
+    p.delete-question {
+        text-align: center;
+        word-break: break-word;
+    }
+
+    div.delete-house {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2vh;
+    }
+
+    div.delete-card {
+        padding: 4vh 3vw;
+        border: 3.75px solid rgba(231, 242, 228, 0.7);
+        border-radius: 4vw;
+        margin: 3.5vh 3.5vw;
+        width: 66vw;
+    }
+
+    div.delete-options {
+        display: flex;
+    }
+
+    div.cancel-delete {
+        display: flex;
+    }
+
+    a.cancel-anchor {
+        background: #0065F8;
+        border-radius: 2vw;
+        border: none;
+        padding: 1.5vh 3.6vw;
+    }
+
+    svg.cancel-icon {
+        display: inline;
+    }
+
+    p.cancel-instruction {
+        display: inline;
+        white-space: pre;
+    }
+
+    div.delete-delete {
+        display: flex;
+    }
+
+    a.delete-anchor {
+        background: #CB0404;
+        border-radius: 2vw;
+        border: none;
+        padding: 1.5vh 3.6vw;
+        margin-left: 2vw;
+    }
+
+    svg.delete-icon {
+        display: inline;
+    }
+
+    p.delete-instruction {
+        display: inline;
+        white-space: pre;
+    }
+
 }
 
 @media (orientation: landscape) {
@@ -723,7 +871,7 @@ a[type="button"] {
     }
 
     svg.logo {
-        height:3.8vw;
+        height:3.15vw;
         padding: ;
         color: #E7F2E4;
         flex: 1;
@@ -741,7 +889,7 @@ a[type="button"] {
         font-size: 2.7vw;
         white-space: pre;
         flex-grow: 0;
-
+        font-family: "Dancing Script", cursive;
     }
 
     div.links-container {
@@ -1012,11 +1160,11 @@ a[type="button"] {
     }
 
     svg.footer-logo {
-        width: 3.45vw;
-        height: 3.45vw;
+        width: 2.86vw;
+        height: 2.86vw;
         /* background: red; */
-        min-width: 3.45vw;
-        min-height: 3.45vw;
+        min-width: 2.86vw;
+        min-height: 2.86vw;
         margin: 0vw;
     }
 
@@ -1026,6 +1174,7 @@ a[type="button"] {
         padding: 0vw;
         max-height: 3.5vw;
         white-space: pre;
+        font-family: "Dancing Script", cursive;
     }
 
     a.footer-link {
@@ -1244,8 +1393,7 @@ a[type="button"] {
         white-space: pre;
     }
     
-    h2.testimonies-heading {
-        margin-left: 3.5vw;
+    h3.testimonies-heading {
         text-align: center;
         margin-top: 6vh;
     }
@@ -1253,6 +1401,7 @@ a[type="button"] {
     div.testimony-holder {
         display: flex;
         justify-content: center;
+        margin-bottom: 2.5vh;
     }
 
     div.testimony-unit{
@@ -1308,6 +1457,157 @@ a[type="button"] {
     }
 
     p.delete-prompt {
+        display: inline;
+        white-space: pre;
+    }
+
+    h2.add-title {
+        text-align: center;
+    }
+
+    input.add-button {
+        background: #0065F8;
+        border-radius: 1vw;
+        border: none;
+        padding: 2.6vh 2.2vw;
+        font-size: 1.4vw;
+        margin-top: 2vh;
+    }
+
+    div.add-card {
+        display: flex;
+        height: 103.33vw;
+        flex-direction: column;
+        align-items: center;
+        z-index: 1;
+    }
+
+
+    label[for="website"], label[for="testimony"] {
+        font-family: "Noto Sans", sans-serif;
+        color: #EFEEEA;
+        font-size: 1.5vw;
+    }
+
+    input.add-field {
+        margin-top: 1vh;
+        margin-bottom: 2vh;
+        width: 21vw;
+    }
+
+    div.add-form {
+        padding: 2.5vw 2.5vw;
+        border: 1px solid #757575;
+        border-radius: 0.5vw;
+    }
+
+    p.add-instruction {
+        color: red;
+        margin-top: 0;
+        font-size: 1.3vw;;
+    }
+
+    textarea {
+        font-family: "Noto Sans", sans-serif;
+        background: transparent;
+        border: 1px solid #757575;
+        color: #EFEEEA;
+        border-radius: 1vw;
+        width: 21vw;
+        height: 30vh;
+        padding: 1vw 1.25vw;
+        font-size: 1.4vw;
+        resize: none;
+        margin-top: 1vh;
+    }
+
+    textarea::placeholder{
+        font-family: "Noto Sans", sans-serif;
+        color: #EFEEEA;
+        font-size: 1.4vw;
+        opacity: 0.5;
+    }
+
+    textarea:focus {
+        font-family: "Noto Sans", sans-serif;
+        color: #EFEEEA;
+        font-size: 1.4vw;
+        outline:none;
+    }
+
+    input::placeholder {
+        opacity: 0.5;
+    }
+
+    p.testimony-data {
+        word-break: break-word;
+    }
+
+    h3.delete-question {
+        text-align: center;
+    }
+
+    p.delete-question {
+        text-align: center;
+        word-break: break-word;
+    }
+
+    div.delete-house {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2.5vh;
+    }
+
+    div.delete-card {
+        padding: 4vh 3vw;
+        border: 3.75px solid rgba(231, 242, 228, 0.7);
+        border-radius: 2vw;
+        margin: 3.5vh 3.5vw;
+        width: 50vw;
+    }
+
+    div.delete-options {
+        display: flex;
+        padding-top: 1vh;
+    }
+
+    div.cancel-delete {
+        display: flex;
+    }
+
+    a.cancel-anchor {
+        background: #0065F8;
+        border-radius: 1vw;
+        border: none;
+        padding: 1.5vh 3.6vw;
+    }
+
+    svg.cancel-icon {
+        display: inline;
+    }
+
+    p.cancel-instruction {
+        display: inline;
+        white-space: pre;
+    }
+
+    div.delete-delete {
+        display: flex;
+    }
+
+    a.delete-anchor {
+        background: #CB0404;
+        border-radius: 1vw;
+        border: none;
+        padding: 1.5vh 3.6vw;
+        margin-left: 2vw;
+    }
+
+    svg.delete-icon {
+        display: inline;
+    }
+
+    p.delete-instruction {
         display: inline;
         white-space: pre;
     }
