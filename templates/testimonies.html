@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Testimonies{% endblock %}
+
+{% block head %}
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+
+        div.testimonials-container::before {
+        content: "loco";
+        background-image: url({{ url_for('static', filename='images/media-kit.jpg') }});
+        filter: brightness(0.2);
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
+        z-index: -1;
+        min-height: 100vh;
+        min-width: 100vw;
+        position: fixed;
+        top: 0;
+    }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="testimonials-container">
+        <div class="testimonies-card">
+            <div class="testimonials-content">
+                <h2 class="testimonials-text text testimonials-header">Testimonies</h2>
+                <div class="invite-card">
+                    <p class="testimonials-text text testimonials-body">WebBuildHQ would like to build a website for you and have your testimony here...</p>
+                </div>
+                <div class="testimonials-link">
+                    <a class=" text button whatsapp testimonials-button" type="button" href="https://wa.me/2347067681676">Whatsapp</a>
+                </div>
+                {% for testimony in testimonies %}
+                    <div class="testimony">
+                        <img class="testimony-image"
+                             alt="{{ testimony.user.first_name }} {{ testimony.user.last_name }}"
+                             src="{{ url_for('static', filename='images/uploads/' ~ testimony.user.picture_name ~ testimony.user.picture_format) }}"
+                        >
+                        <p class="text testimony-author"><b>{{ testimony.user.first_name }} {{ testimony.user.last_name }}</b></p>
+                        <p class="text testimony"><em>{{ testimony.testimony }}</em></p>
+                        <p class="text testifiers-website"><b>For: </b>
+                            <a class="text testifiers-website" href="{{ testimony.website }}">{{ testimony.website }}</a>
+                        </p>
+                        <p class="text testimony-date"><b>Posted </b>on {{ testimony.datetime.strftime("%A, %B %d, %Y at %H:%M UTC") }}</p>
+                    </div>
+                {% endfor %}
+                <p class="testimonials-text text"><a class="testimonials-prompt" href="{{ url_for('sign_up') }}">Sign Up</a> to give WebBuildHQ a testimony.</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

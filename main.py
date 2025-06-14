@@ -89,9 +89,10 @@ def contact():
     return render_template("contact.html")
 
 
-@app.route("/testimonials")
-def testimonials():
-    return render_template("testimonials.html")
+@app.route("/testimonies")
+def testimonies():
+    testifies = db.session.execute(db.select(Testimony).order_by(Testimony.id.desc())).scalars().all()
+    return render_template("testimonies.html", testimonies=testifies)
 
 
 @app.route("/login", methods=["GET", "POST"])
