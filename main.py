@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, request, flash
-from forms import LoginForm, SignupForm, TestimonyForm
+from forms import LoginForm, SignupForm, TestimonyForm, PictureForm
 import os
 from flask_wtf.csrf import CSRFProtect
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
@@ -24,14 +24,20 @@ csrf = CSRFProtect(app)
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE-URI")
 db.init_app(app)
 
+app.config["UPLOAD_FOLDER"] = "static/images/uploads"
+ALLOWED_EXTENSIONS = {"jpg", "jpeg", "png", "webp"}
+app.config["MAX_CONTENT_LENGTH"] = 2 * 1000 * 1000
+
 
 class User(UserMixin, db.Model):
     __tablename__ = "users"
     id: Mapped[int] = mapped_column(Integer(), primary_key=True)
     first_name: Mapped[str] = mapped_column(String())
     last_name: Mapped[str] = mapped_column(String())
-    email: Mapped[str] = mapped_column(String(), unique=True)
+    email: Mapped[str] = mapped_column(String(), unique=True)  # Catch this exception
     password: Mapped[str] = mapped_column(String())
+    picture_name: Mapped[str] = mapped_column(String(), nullable=True)
+    picture_format: Mapped[str] = mapped_column(String(), nullable=True)
     testimonies = relationship("Testimony", back_populates="user")
 
 
@@ -200,6 +206,56 @@ def delete(i_d):
     db.session.delete(testimony)
     db.session.commit()
     return redirect(url_for("account"))
+
+
+@app.route("/profile-picture")
+def profile_picture():
+    return render_template("profile-picture.html")
+
+
+def valid_picture(filename):
+    return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+@app.route("/upload-picture", methods=["GET", "POST"])
+def upload_picture():
+    picture_form = PictureForm()
+    if request.method == "POST":
+        if "picture" not in request.files:
+            flash("No file part")
+            return redirect(url_for("upload_picture"))
+        profile_pic = request.files["picture"]
+        pic_name = profile_pic.filename
+        if pic_name == "":
+            flash("No file selected")
+            return redirect(url_for("upload_picture"))
+        if profile_pic and valid_picture(pic_name):
+            profile_pic.save(
+                os.path.join(
+                    app.config["UPLOAD_FOLDER"],
+                    f"{current_user.id}.{pic_name.rsplit(".", 1)[1]}"
+                )
+            )
+            user = db.get_or_404(User, current_user.id)
+            user.picture_name = f"{current_user.id}"
+            user.picture_format = f".{pic_name.rsplit(".", 1)[1]}"
+            db.session.commit()
+        return redirect(url_for("profile_picture"))
+    return render_template("upload-picture.html", form=picture_form)
+
+
+@app.route("/confirm-delete-picture")
+def confirm_remove():
+    return render_template("confirm-remove.html")
+
+
+@app.route("/delete-picture")
+def delete_picture():
+    user = db.get_or_404(User, current_user.id)
+    user.picture_name = None
+    user.picture_format = None
+    db.session.commit()
+    return redirect(url_for("profile_picture"))
 
 
 if __name__ == "__main__":

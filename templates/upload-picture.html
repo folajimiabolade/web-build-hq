@@ -1,0 +1,22 @@
+{% extends "user_base.html" %}
+
+{% block user_title %}Upload Picture{% endblock %}
+
+{% block user_body %}
+    <div class="upload-container">
+        <form class="upload-form" enctype="multipart/form-data" method="post">
+            {{ form.csrf_token }}
+            {{ form.picture() }}<br>
+            {{ form.button() }}
+            <!--  Flashed Messages  -->
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="text upload-flash">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <!--  End of Flashed Messages  -->
+        </form>
+    </div>
+{% endblock %}

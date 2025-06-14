@@ -608,7 +608,7 @@ a[type="button"] {
 
     a.testimony-button {
         background: #0065F8;
-        border-radius: 1vw;
+        border-radius: 2vw;
         border: none;
         padding: 1.5vh 3.6vw;
         margin-left: 3.5vw;
@@ -731,7 +731,7 @@ a[type="button"] {
     p.add-instruction {
         color: red;
         margin-top: 0;
-        font-size: 2.6vw;;
+        font-size: 2.6vw;
     }
 
     textarea {
@@ -836,6 +836,173 @@ a[type="button"] {
     p.delete-instruction {
         display: inline;
         white-space: pre;
+    }
+
+    div.picture-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    a.picture-button {
+        background: transparent;
+        border-radius: 2vw;
+        border: 1px solid #E7F2E4;
+        padding: 1.5vh 3.6vw;
+        margin-left: 3.5vw;
+    }
+
+    svg.picture-svg {
+        display: inline;
+    }
+
+    p.picture-prompt {
+        display: inline;
+        white-space: pre;
+    }
+
+    div.picture-testimony {
+        display: flex;
+        justify-content: center;
+    }
+
+    div.picture-holder {
+        display: flex;
+        justify-content: center;
+        margin-top: 2vh;
+        height: 50vw;
+    }
+
+    div.picture-placeholder {
+        border: 1.5vw solid #E7F2E4;
+        width: 50vw;
+        height: 50vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    svg.icon-placeholder {
+        width: 25vw;
+        height: 25vw;
+    }
+
+    div.picture-options {
+        display: flex;
+        justify-content: center;
+        margin-top: 4vh;
+    }
+
+    a.upload-button {
+        background: #0065F8;
+        border-radius: 2vw;
+        border: none;
+        padding: 1.5vh 3.6vw;
+    }
+
+    svg.upload-svg {
+        display: inline;
+    }
+
+    p.upload-prompt {
+        display: inline;
+        white-space: pre;
+    }
+
+    form.upload-form {
+        margin-left: 3.5vw;
+        margin-bottom: 50vh;
+    }
+
+    input.upload-picture {
+        cursor: pointer;
+        margin-top: 4vh;
+        margin-bottom: 2vh;
+    }
+
+    input.submit-picture {
+        background: #0065F8;
+        border-radius: 2vw;
+        border: none;
+        padding: 1.5vh 3.6vw;
+    }
+    
+    p.upload-flash {
+        color: #FF90BB;
+        margin-top: 0;
+        font-size: 2.6vw;
+    }
+
+    img.profile-picture {
+        width: 50vw;
+        height: 50vw;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    div.new-picture {
+        display: flex;
+    }
+
+    a.update-picture {
+        background: #0065F8;
+        border-radius: 2vw;
+        border: none;
+        padding: 1.5vh 3.6vw;
+    }
+
+    svg.picture-change {
+        display: inline;
+    }
+
+    p.change-picture {
+        display: inline;
+        white-space: pre;
+    }
+
+    div.delete-picture {
+        display: flex;
+    }
+
+    a.delete-photo {
+        background: #CB0404;
+        border-radius: 2vw;
+        border: none;
+        padding: 1.5vh 3.6vw;
+        margin-left: 2vw;
+    }
+
+    svg.delete-pic {
+        display: inline;
+    }
+
+    p.pic-delete {
+        display: inline;
+        white-space: pre;
+    }
+
+    div.delete-confirm {
+        display: flex;
+    }
+
+    div.delete-home {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 40vh;
+    }
+    
+    h3.delete-pix {
+        margin-top: 5vh;
+    }
+
+    img.account-picture {
+        width: 1rem;
+        height: 1rem;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 50%;
+        display: inline;
+        position: static;
+        border: 1px solid #E7F2E4;
     }
 
 }
@@ -1610,6 +1777,169 @@ a[type="button"] {
     p.delete-instruction {
         display: inline;
         white-space: pre;
+    }
+    
+    div.picture-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 4vh;
+    }
+
+    a.picture-button {
+        background: transparent;
+        border-radius: 1vw;
+        border: 1px solid #E7F2E4;
+        padding: 1vh 2vw;
+        margin-left: 2vw;
+    }
+
+    svg.picture-svg {
+        display: inline-block;
+    }
+
+    p.picture-prompt {
+        display: inline-block;
+        white-space: pre;
+    }
+
+    div.picture-testimony {
+        display: flex;
+        justify-content: center;
+    }
+
+    div.picture-holder {
+        display: flex;
+        justify-content: center;
+        margin-top: 5vh;
+    }
+
+    div.picture-placeholder {
+        border: 0.75vw solid #E7F2E4;
+        width: 25vw;
+        height: 25vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    svg.icon-placeholder {
+        width: 12.5vw;
+        height: 12.5vw;
+    }
+
+    div.picture-options {
+        display: flex;
+        justify-content: center;
+        margin-top: 8vh;
+    }
+
+    a.upload-button {
+        background: #0065F8;
+        border-radius: 1vw;
+        border: none;
+        padding: 1vh 2vw;
+    }
+
+    svg.upload-svg {
+        display: inline-block;
+    }
+
+    p.upload-prompt {
+        display: inline-block;
+        white-space: pre;
+    }
+
+    form.upload-form {
+        margin-left: 2vw;
+    }
+
+    input.upload-picture {
+        cursor: pointer;
+        margin-top: 8vh;
+        margin-bottom: 2vh;
+    }
+
+    input.submit-picture {
+        background: #0065F8;
+        border-radius: 0.5vw;
+        border: none;
+        padding: 1vh 1.5vw;
+    }
+
+    p.upload-flash {
+        color: #FF90BB;
+        margin-top: 0;
+        font-size: 1.3vw;;
+    }
+
+    img.profile-picture {
+        width: 25vw;
+        height: 25vw;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    h3.delete-pix {
+        margin-top: 6vh;
+    }
+
+    div.new-picture {
+        display: flex;
+    }
+
+    a.update-picture {
+        background: #0065F8;
+        border-radius: 1vw;
+        border: none;
+        padding: 1.5vh 3.6vw;
+    }
+
+    svg.picture-change {
+        display: inline;
+    }
+
+    p.change-picture {
+        display: inline;
+        white-space: pre;
+    }
+
+    div.delete-picture {
+        display: flex;
+    }
+
+    a.delete-photo {
+        background: #CB0404;
+        border-radius: 1vw;
+        border: none;
+        padding: 1.5vh 3.6vw;
+        margin-left: 2vw;
+    }
+
+    svg.delete-pic {
+        display: inline;
+    }
+
+    p.pic-delete {
+        display: inline;
+        white-space: pre;
+    }
+
+    div.delete-confirm {
+        display: flex;
+    }
+
+    div.delete-home {
+        display: flex;
+        justify-content: center;
+    }
+
+    img.account-picture {
+        width: 1rem;
+        height: 1rem;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 50%;
+        border: 1px solid #E7F2E4;
     }
 
 }

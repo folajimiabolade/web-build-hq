@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, EmailField, PasswordField, SubmitField, BooleanField, URLField, TextAreaField
+from wtforms import StringField, EmailField, PasswordField, SubmitField, BooleanField, URLField, TextAreaField, FileField
 from wtforms.validators import DataRequired, Length, Email, InputRequired, URL
 
 
@@ -55,3 +55,8 @@ class TestimonyForm(FlaskForm):
         render_kw={"class": "field add-field", "placeholder": "Your Testimony"}
     )
     button = SubmitField(label="Submit", render_kw={"class": "text button add-button"})
+
+
+class PictureForm(FlaskForm):
+    picture = FileField(render_kw={"class": "text"})
+    button = SubmitField(label="Upload", render_kw={"class": "button upload-button"})

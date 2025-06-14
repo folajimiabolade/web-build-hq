@@ -4,12 +4,29 @@
 
 {% block user_body %}
     <h2 class="text user-greeting">Account</h2>
-    <div class="add-container">
-        <a class="text testimony-button" type="button" href="{{ url_for('add_testimony') }}">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg testify-svg" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
-            </svg><p class="testimony-prompt">  Add Testimony</p>
-        </a>
+    <div class="picture-testimony">
+<!--        <div class="picture-container">-->
+            {% if current_user.picture_name %}
+            <a class="text picture-button" type="button" href="{{ url_for('profile_picture') }}">
+                <img class="account-picture" alt="profile-picture" src="{{ url_for('static', filename='images/uploads/' ~ current_user.picture_name ~ current_user.picture_format) }}">
+                <p class="picture-prompt">  Profile Picture</p>
+            </a>
+            {% else %}
+            <a class="text picture-button" type="button" href="{{ url_for('profile_picture') }}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle picture-svg" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                </svg><p class="picture-prompt">  Profile Picture</p>
+            </a>
+            {% endif %}
+<!--        </div>-->
+<!--        <div class="add-container">-->
+            <a class="text testimony-button" type="button" href="{{ url_for('add_testimony') }}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg testify-svg" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+                </svg><p class="testimony-prompt">  Add Testimony</p>
+            </a>
+<!--        </div>-->
     </div>
     {% if current_user.testimonies %}
         <h3 class="text testimonies-heading">Testimonies</h3>
