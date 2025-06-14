@@ -7,10 +7,31 @@
         body {
             box-sizing: border-box;
         }
+
+        div.designs-house::before {
+            content: "background placeholder";
+            color: transparent;
+            background-image: url("{{ url_for('static', filename='images/design.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            min-height: 100vh;
+            min-width: 100vw;
+            z-index: -1;
+            filter: brightness(0.2);
+        }
+
+        div.designs-house {
+            min-height: 100vh;
+        }
     </style>
 {% endblock %}
 
 
 {% block body %}
-    <h2 class="text">This is the designs page</h2>
+    <div class="designs-house">
+        <h2 class="text">This is the designs page</h2>
+    </div>
 {% endblock %}
