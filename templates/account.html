@@ -3,12 +3,12 @@
 {% block user_title %}Account{% endblock %}
 
 {% block user_body %}
-    <h2 class="text user-greeting">Account</h2>
+    <h2 class="text user-greeting">{{ current_user.first_name }}'s Account</h2>
     <div class="picture-testimony">
 <!--        <div class="picture-container">-->
             {% if current_user.picture_name %}
             <a class="text picture-button" type="button" href="{{ url_for('profile_picture') }}">
-                <img class="account-picture" alt="profile-picture" src="{{ url_for('static', filename='images/uploads/' ~ current_user.picture_name ~ current_user.picture_format) }}">
+                <img class="account-picture" alt="picture" src="{{ url_for('static', filename='images/uploads/' ~ current_user.picture_name ~ current_user.picture_format) }}">
                 <p class="picture-prompt">  Profile Picture</p>
             </a>
             {% else %}

@@ -25,7 +25,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE-URI")
 db.init_app(app)
 
 app.config["UPLOAD_FOLDER"] = "static/images/uploads"
-ALLOWED_EXTENSIONS = {"jpg", "jpeg", "png", "webp"}
+ALLOWED_EXTENSIONS = {"jpg", "jpeg", "png", "webp", "jfif"}
 app.config["MAX_CONTENT_LENGTH"] = 2 * 1000 * 1000
 
 
@@ -240,6 +240,9 @@ def upload_picture():
             user.picture_name = f"{current_user.id}"
             user.picture_format = f".{pic_name.rsplit(".", 1)[1]}"
             db.session.commit()
+        else:
+            flash("File format not supported")
+            return redirect(url_for("upload_picture"))
         return redirect(url_for("profile_picture"))
     return render_template("upload-picture.html", form=picture_form)
 

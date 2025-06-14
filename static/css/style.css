@@ -1005,6 +1005,10 @@ a[type="button"] {
         border: 1px solid #E7F2E4;
     }
 
+    h2.picture-greeting {
+        text-align: center;
+    }
+
 }
 
 @media (orientation: landscape) {
@@ -1940,6 +1944,10 @@ a[type="button"] {
         object-position: center;
         border-radius: 50%;
         border: 1px solid #E7F2E4;
+    }
+
+    h2.picture-greeting {
+        text-align: center;
     }
 
 }

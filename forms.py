@@ -58,5 +58,5 @@ class TestimonyForm(FlaskForm):
 
 
 class PictureForm(FlaskForm):
-    picture = FileField(render_kw={"class": "text"})
+    picture = FileField(render_kw={"class": "text upload-picture"})
     button = SubmitField(label="Upload", render_kw={"class": "button upload-button"})
