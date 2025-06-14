@@ -34,7 +34,7 @@ class User(UserMixin, db.Model):
     id: Mapped[int] = mapped_column(Integer(), primary_key=True)
     first_name: Mapped[str] = mapped_column(String())
     last_name: Mapped[str] = mapped_column(String())
-    email: Mapped[str] = mapped_column(String(), unique=True)  # Catch this exception
+    email: Mapped[str] = mapped_column(String(), unique=True)
     password: Mapped[str] = mapped_column(String())
     picture_name: Mapped[str] = mapped_column(String(), nullable=True)
     picture_format: Mapped[str] = mapped_column(String(), nullable=True)
@@ -119,6 +119,11 @@ def sign_up():
     if request.method == "POST":
         if signup_form.validate_on_submit():
             data = request.form
+            db_emails = db.session.query(User.email).all()
+            for email in db_emails:
+                if data["email"] == email[0]:
+                    flash("This Account Already Exists Here.")
+                    return redirect(url_for("sign_up"))
             hashed_password = generate_password_hash(
                 password=data["password"],
                 method="pbkdf2",

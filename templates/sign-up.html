@@ -17,6 +17,15 @@
             <div class="signup-form">
                 <form action="{{ url_for('sign_up') }}" method="post" novalidate>
                     {{ form.csrf_token }}
+                    <!--  Flashed Messages  -->
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <p class="text signup-flash">{{ message }}</p>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    <!--  End of Flashed Messages  -->
                     {{ form.first_name.label }}<br>
                     {{ form.first_name() }}<br>
                     {% for error in form.first_name.errors %}
