@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, request, flash
-from forms import LoginForm, SignupForm, CommentForm, PictureForm
+from forms import LoginForm, SignupForm, CommentForm, PictureForm, SettingsForm
 import os
 from flask_wtf.csrf import CSRFProtect
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
@@ -163,16 +163,22 @@ def logout():
 @app.route("/settings", methods=["GET", "POST"])
 def settings():
     user = db.session.execute(db.select(User).where(User.id == current_user.id)).scalar()
-    settings_form = SignupForm(
+    settings_form = SettingsForm(
         first_name=user.first_name,
         last_name=user.last_name,
         email=user.email
     )
-    if settings_form.validate_on_submit():
-        data = request.form
-        user.first_name = data["first_name"]
-        user.last_name = data["last_name"]
-        user.email = data["email"]
+    if request.method == "POST":
+        if settings_form.validate_on_submit():
+            data = request.form
+            print(data["last_name"])
+            with app.app_context():
+                user = db.session.execute(db.select(User).where(User.id == current_user.id)).scalar()
+                user.first_name = data["first_name"]
+                user.last_name = data["last_name"]
+                user.email = data["email"]
+                db.session.commit()
+            return redirect(url_for("account"))
     return render_template("settings.html", form=settings_form)
 
 
