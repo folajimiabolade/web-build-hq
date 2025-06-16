@@ -91,8 +91,8 @@ def contact():
 
 @app.route("/testimonies")
 def testimonies():
-    testifies = db.session.execute(db.select(Testimony).order_by(Testimony.id.desc())).scalars().all()
-    return render_template("testimonies.html", testimonies=testifies)
+    posts = db.session.execute(db.select(Testimony).order_by(Testimony.id.desc())).scalars().all()
+    return render_template("testimonies.html", testimonies=posts)
 
 
 @app.route("/login", methods=["GET", "POST"])
