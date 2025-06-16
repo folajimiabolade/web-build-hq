@@ -41,6 +41,7 @@ class SignupForm(FlaskForm):
         render_kw={"class": "checkbox"}
     )
     button = SubmitField(label="Sign Up", render_kw={"class": "text button signup-button signup-field"})
+    submit = SubmitField(label="Submit", render_kw={"class": "text button signup-button signup-field"})
 
 
 class CommentForm(FlaskForm):

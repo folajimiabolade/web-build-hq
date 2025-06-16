@@ -30,10 +30,12 @@
             <div class="testimonials-content">
                 <h2 class="testimonials-text text testimonials-header">Comments</h2>
                 <div class="invite-card">
-                    <p class="testimonials-text text testimonials-body">WebBuildHQ would like to build a website for you and have your testimony here...</p>
-                </div>
-                <div class="testimonials-link">
-                    <a class=" text button whatsapp testimonials-button" type="button" href="https://wa.me/2347067681676">Whatsapp</a>
+                    <p class="testimonials-text text testimonials-body">This web application was built by WebBuildHQ. </p>
+                    <p class="testimonials-text text testimonials-body">
+                        <a class="testimonials-prompt" href="{{ url_for('sign_up') }}">
+                            Sign up
+                        </a> to add a comment, upload a picture, test it out and come back here to find your comment! You can edit or delete a comment if you want.
+                    </p>
                 </div>
                 {% for comment in comments %}
                     <div class="testimony">
@@ -46,7 +48,9 @@
                         <p class="text testimony-date"><b>Posted </b>on {{ comment.datetime.strftime("%A, %B %d, %Y at %H:%M UTC") }}</p>
                     </div>
                 {% endfor %}
-                <p class="testimonials-text text"><a class="testimonials-prompt" href="{{ url_for('sign_up') }}">Sign Up</a> to give WebBuildHQ a testimony.</p>
+                <div class="testimonials-link">
+                    <a class=" text button whatsapp testimonials-button" type="button" href="https://wa.me/2347067681676">Whatsapp</a>
+                </div>
             </div>
         </div>
     </div>

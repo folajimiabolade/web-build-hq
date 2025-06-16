@@ -49,10 +49,10 @@
                     <p class="text login-prompt signup-field">Already have an account?
                         <a class="signup-login" href="{{ url_for('login') }}">Login</a>
                     </p>
-                    <p class="text signup-field privacy-text">{{ form.privacy() }}  Agree to <a class="signup-ppolicy" href="{{ url_for('privacy_policy') }}">Privacy Policy</a></p>
-                    {% for error in form.privacy.errors %}
-                    <p class="text signup-instruction">{{ error }}</p>
-                    {% endfor %}
+<!--                    <p class="text signup-field privacy-text">{{ form.privacy() }}  Agree to <a class="signup-ppolicy" href="{{ url_for('privacy_policy') }}">Privacy Policy</a></p>-->
+<!--                    {% for error in form.privacy.errors %}-->
+<!--                    <p class="text signup-instruction">{{ error }}</p>-->
+<!--                    {% endfor %}-->
                     {{ form.button() }}
                 </form>
             </div>

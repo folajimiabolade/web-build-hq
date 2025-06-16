@@ -129,8 +129,8 @@ def sign_up():
                 salt_length=8
             )
             user = User(
-                first_name=data["first_name"],
-                last_name=data["last_name"],
+                first_name=data["first_name"].title(),
+                last_name=data["last_name"].title(),
                 email=data["email"],
                 password=hashed_password
             )
@@ -160,9 +160,20 @@ def logout():
     return redirect(url_for("home"))
 
 
-@app.route("/settings")
+@app.route("/settings", methods=["GET", "POST"])
 def settings():
-    return render_template("settings.html")
+    user = db.session.execute(db.select(User).where(User.id == current_user.id)).scalar()
+    settings_form = SignupForm(
+        first_name=user.first_name,
+        last_name=user.last_name,
+        email=user.email
+    )
+    if settings_form.validate_on_submit():
+        data = request.form
+        user.first_name = data["first_name"]
+        user.last_name = data["last_name"]
+        user.email = data["email"]
+    return render_template("settings.html", form=settings_form)
 
 
 @app.route("/add-comment", methods=["GET", "POST"])

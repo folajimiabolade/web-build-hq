@@ -310,17 +310,18 @@ a[type="button"] {
     }
 
     h2.testimonials-header {
-        margin-bottom: 0vh;
+        margin-bottom: 3vw;
         text-align: center;
     }
 
     div.invite-card {
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
     }
 
     p.testimonials-body {
-        margin-top: 2vh;
+        margin: 0vw;
         text-align: center;
         width: 60vw;
     }
@@ -334,6 +335,7 @@ a[type="button"] {
         border-radius: 1vw;
         padding: 1.75vh 7.5vw;
         max-width: 20vw;
+        margin: 8vw 0vw;
     }
 
     div.footer {
@@ -926,6 +928,16 @@ a[type="button"] {
         margin-bottom: 2vh;
     }
 
+    input.upload-button {
+        cursor: pointer;
+        border-radius: 1vw;
+        border: none;
+        padding: 1.5vh 3.6vw;
+        font-size: 2.6vw;
+        background: #0065F8;
+        color: #E7F2E4;
+    }
+
     input.submit-picture {
         background: #0065F8;
         border-radius: 2vw;
@@ -1018,7 +1030,7 @@ a[type="button"] {
 
     div.testimony {
         text-align: center;
-        margin-top: 8vw;
+        margin: 4vw 0vw;
         padding: 12vw 9vw;
         border: 0.05vw solid rgba(231, 242, 228, 0.7);
         border-radius: 2vw;
@@ -1030,6 +1042,8 @@ a[type="button"] {
     }
 
     img.testimony-image {
+        object-fit: cover;
+        object-position: center;
         position: static;
         width: 14rem;
         height: 14rem;
@@ -1319,12 +1333,13 @@ a[type="button"] {
 
     div.invite-card {
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
     }
 
     p.testimonials-body {
         text-align: center;
-        margin-top: 0vw;
+        margin: 0vw;
         width: 50vw;
     }
 
@@ -1337,7 +1352,7 @@ a[type="button"] {
         border-radius: 1vw;
         padding: 2.5vh 0vw;
         width: 20vw;
-        margin-bottom: 6vw;
+        margin: 4vw 0vw;
         text-align: center;
     }
 
@@ -1682,6 +1697,7 @@ a[type="button"] {
         padding: 2.6vh 2.2vw;
         font-size: 1.4vw;
         margin-top: 2vh;
+        cursor: pointer;
     }
 
     div.add-card {
@@ -1902,12 +1918,23 @@ a[type="button"] {
         margin-bottom: 2vh;
     }
 
+    input.upload-button {
+        background: #0065F8;
+        border-radius: 1vw;
+        border: none;
+        padding: 2.8vh 1.8vw;
+        font-size: 1.4vw;
+        color: #E7F2E4;
+    }
+
     input.submit-picture {
         background: #0065F8;
         border-radius: 0.5vw;
         border: none;
         padding: 1vh 1.5vw;
     }
+
+
 
     p.upload-flash {
         color: #FF90BB;
@@ -1990,7 +2017,7 @@ a[type="button"] {
     }
 
     div.testimony {
-        margin-bottom: 2vw;
+        margin-top: 2vw;
         text-align: center;
         padding: 4vh 3vw;
         border: 0.025vw solid rgba(231, 242, 228, 0.7);
@@ -1999,10 +2026,16 @@ a[type="button"] {
     }
 
     img.testimony-image {
+        object-fit: cover;
+        object-position: center;
         width: 10.5rem;
         height: 10.5rem;
         border-radius: 50%;
         /* border: 2px solid #E7F2E4; */
+    }
+
+    a.sign-up.nav-link {
+        text-wrap: nowrap;
     }
 
 }
