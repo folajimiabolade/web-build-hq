@@ -1,0 +1,20 @@
+{% extends "user_base.html" %}
+
+{% block user_title %}Add Comment{% endblock %}
+
+{% block user_body %}
+    <h2 class="text add-title">Add Comment</h2>
+    <div class="add-card">
+        <div class="add-form">
+            <form action="{{ url_for('edit_comment', i_d=i_d) }}" method="post" novalidate>
+                {{ form.csrf_token }}
+                {{ form.comment.label }}<br>
+                {{ form.comment() }}<br>
+                {% for error in form.comment.errors %}
+                <p class="text add-instruction">{{ error }}</p>
+                {% endfor %}
+                {{ form.button() }}
+            </form>
+        </div>
+    </div>
+{% endblock %}

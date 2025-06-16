@@ -43,16 +43,11 @@ class SignupForm(FlaskForm):
     button = SubmitField(label="Sign Up", render_kw={"class": "text button signup-button signup-field"})
 
 
-class TestimonyForm(FlaskForm):
-    website = URLField(
-        label="URL of website built",
-        validators=[DataRequired(), URL()],
-        render_kw={"class": "field add-field website-url", "placeholder": "e.g. https://website.com"}
-    )
-    testimony = TextAreaField(
-        label="Testimony",
+class CommentForm(FlaskForm):
+    comment = TextAreaField(
+        label="Comment",
         validators=[DataRequired()],
-        render_kw={"class": "field add-field", "placeholder": "Your Testimony"}
+        render_kw={"class": "field add-field", "placeholder": "Your Comment"}
     )
     button = SubmitField(label="Submit", render_kw={"class": "text button add-button"})
 

@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, request, flash
-from forms import LoginForm, SignupForm, TestimonyForm, PictureForm
+from forms import LoginForm, SignupForm, CommentForm, PictureForm
 import os
 from flask_wtf.csrf import CSRFProtect
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
@@ -38,17 +38,16 @@ class User(UserMixin, db.Model):
     password: Mapped[str] = mapped_column(String())
     picture_name: Mapped[str] = mapped_column(String(), nullable=True)
     picture_format: Mapped[str] = mapped_column(String(), nullable=True)
-    testimonies = relationship("Testimony", back_populates="user")
+    comments = relationship("Comment", back_populates="user")
 
 
-class Testimony(UserMixin, db.Model):
-    __tablename__ = "testimonies"
+class Comment(UserMixin, db.Model):
+    __tablename__ = "comments"
     id: Mapped[int] = mapped_column(primary_key=True)
     datetime: Mapped[datetime] = mapped_column(DateTime())
-    website: Mapped[str] = mapped_column(String())
-    testimony: Mapped[str] = mapped_column(String())
+    comment: Mapped[str] = mapped_column(String())
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
-    user = relationship("User", back_populates="testimonies")
+    user = relationship("User", back_populates="comments")
 
 
 with app.app_context():
@@ -89,10 +88,10 @@ def contact():
     return render_template("contact.html")
 
 
-@app.route("/testimonies")
-def testimonies():
-    testifies = db.session.execute(db.select(Testimony).order_by(Testimony.id.desc())).scalars().all()
-    return render_template("testimonies.html", testimonies=testifies)
+@app.route("/comments")
+def comments():
+    posts = db.session.execute(db.select(Comment).order_by(Comment.id.desc())).scalars().all()
+    return render_template("comments.html", comments=posts)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -151,7 +150,7 @@ def privacy_policy():
 @app.route("/account")
 @login_required
 def account():
-    print(current_user.testimonies)
+    print(current_user.comments)
     return render_template("account.html")
 
 
@@ -166,50 +165,49 @@ def settings():
     return render_template("settings.html")
 
 
-@app.route("/add-testimony", methods=["GET", "POST"])
-def add_testimony():
-    testimony_form = TestimonyForm()
+@app.route("/add-comment", methods=["GET", "POST"])
+def add_comment():
+    comment_form = CommentForm()
     if request.method == "POST":
-        if testimony_form.validate_on_submit():
+        if comment_form.validate_on_submit():
             data = request.form
             with app.app_context():
-                testimony = Testimony(
+                comment = Comment(
                     datetime=datetime.now(timezone.utc),
-                    website=data["website"],
-                    testimony=data["testimony"],
+                    comment=data["comment"],
                     user_id = current_user.id
                 )
-                db.session.add(testimony)
+                db.session.add(comment)
                 db.session.commit()
             return redirect(url_for("account"))
-    return render_template("add-testimony.html", form=testimony_form)
+    return render_template("add-comment.html", form=comment_form)
 
 
-@app.route("/edit-testimony/<int:i_d>", methods=["GET", "POST"])
-def edit_testimony(i_d):
-    testimony = db.session.execute(db.select(Testimony).where(Testimony.id == i_d)).scalar()
-    testimony_form = TestimonyForm(website=testimony.website, testimony=testimony.testimony)
+@app.route("/edit-comment/<int:i_d>", methods=["GET", "POST"])
+def edit_comment(i_d):
+    comment = db.session.execute(db.select(Comment).where(Comment.id == i_d)).scalar()
+    comment_form = CommentForm(comment=comment.comment)
     if request.method == "POST":
-        if testimony_form.validate_on_submit():
+        if comment_form.validate_on_submit():
             data = request.form
             with app.app_context():
-                testimony = db.session.execute(db.select(Testimony).where(Testimony.id == i_d)).scalar()
-                testimony.website = data["website"]
-                testimony.testimony = data["testimony"]
+                comment = db.session.execute(db.select(Comment).where(Comment.id == i_d)).scalar()
+                comment.comment = data["comment"]
                 db.session.commit()
             return redirect(url_for("account"))
-    return render_template("edit-testimony.html", i_d=i_d, form=testimony_form)
+    return render_template("edit-comment.html", i_d=i_d, form=comment_form)
 
 
 @app.route("/confirm-delete/<int:i_d>")
 def confirm_delete(i_d):
-    pending_testimony = db.session.execute(db.select(Testimony).where(Testimony.id == i_d)).scalar()
-    return render_template("confirm-delete.html", testimony=pending_testimony)
+    pending_comment = db.session.execute(db.select(Comment).where(Comment.id == i_d)).scalar()
+    return render_template("confirm-delete.html", comment=pending_comment)
+
 
 @app.route("/delete/<int:i_d>")
 def delete(i_d):
-    testimony = db.session.execute(db.select(Testimony).where(Testimony.id == i_d)).scalar()
-    db.session.delete(testimony)
+    comment = db.session.execute(db.select(Comment).where(Comment.id == i_d)).scalar()
+    db.session.delete(comment)
     db.session.commit()
     return redirect(url_for("account"))
 
