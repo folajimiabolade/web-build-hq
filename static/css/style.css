@@ -15,7 +15,7 @@ a[type="button"] {
     text-decoration: none;
 }
 
-input[type='submit']:hover, a[type="button"]:hover {
+input[type='submit']:hover, a.whatsapp:hover {
     background: #27548A;
 }
 
