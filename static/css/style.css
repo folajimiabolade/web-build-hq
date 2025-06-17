@@ -590,6 +590,7 @@ a[type="button"] {
 
     div.testimony-change {
         display: flex;
+        margin-top: 2vw;
     }
 
     div.edit-container {
