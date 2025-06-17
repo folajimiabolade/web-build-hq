@@ -15,6 +15,10 @@ a[type="button"] {
     text-decoration: none;
 }
 
+input[type='submit']:hover, a[type="button"]:hover {
+    background: #27548A;
+}
+
 @media (orientation: portrait) {
 
     webbuild-container {
