@@ -1168,6 +1168,7 @@ a[type="button"] {
         padding: 15vh 25vw;
         font-size: 2vw;
         margin-top: 0vh;
+        min-width: 50vw;
     }
 
     .hero-body {
