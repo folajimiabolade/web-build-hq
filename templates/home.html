@@ -10,8 +10,20 @@
             margin-bottom: 0;
         }
 
-        img {
-            max-width: 100vw;
+        div.hero-prompt::before {
+            content: "Hero";
+            color: transparen;
+            background-image: url("{{ url_for('static', filename='images/laptop-table.png') }}");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            filter: brightness(0.2);
+            min-width: 100vw;
+            min-height: 100vh;
+            z-index: -1;
+            position: fixed;
+            top: 0;
+            left: 0;
         }
 
 
@@ -20,15 +32,12 @@
 
 {% block body %}
 <!--  Hero  -->
-<div class="hero-container">
-    <img alt="a web developer's work station" src="{{ url_for('static', filename='images/laptop-table.png') }}">
-    <div class="hero-prompt">
-        <h2 class="text hero-body hero-title">Own a website or web application</h2>
-        <p class="text hero-body hero-content">Create a website or web application for any purpose. Pick a
-                domain name (e.g. webapp.com), provide your information (texts, pictures e.t.c.) and publish it (get it on the internet).</p>
-        <div class="hero-actions">
-            <a class="text button hero-body hero-button whatsapp" type="button" href="https://wa.me/2347067681676">Whatsapp</a>
-        </div>
+<div class="hero-prompt">
+    <h2 class="text hero-body hero-title">Own a website or web application</h2>
+    <p class="text hero-body hero-content">Create a website or web application for any purpose. Pick a
+            domain name (e.g. webapp.com), provide your information texts, pictures and publish it (get it on the internet).</p>
+    <div class="hero-actions">
+        <a class="text button hero-body hero-button whatsapp" type="button" href="https://wa.me/2347067681676">Whatsapp</a>
     </div>
 </div>
 {% endblock %}
