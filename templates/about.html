@@ -7,27 +7,40 @@
         body {
             box-sizing: border-box;
         }
+
+        div.about-content::before {
+            content: "about";
+            color: transparent;
+            background-image: url( "{{ url_for('static', filename='images/phone-table.jpg') }}" );
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            min-width: 100vw;
+            min-height: 100vh;
+            filter: brightness(0.2);
+        }
     </style>
 {% endblock %}
 
 {% block body %}
 <!--  About  -->
-<div class="about-container">
-    <img class="about-image" alt="phone with a website on a table" src="{{ url_for('static', filename='images/phone-table.jpg') }}">
-    <div class="about-content">
-        <div class="about-text">
-            <h2 class="text">About</h2>
-            <p class="text about-body">
-                WebBuildHQ is a web development company that builds beautiful websites and web applications to your specification,
-                just provide your information
-                (Home, About, Goods/Services, Contact, Pictures,  e.t.c),
-                choose a website name(domain name e.g. website.com) and we will help you set your website up on
-                the internet.
-            </p>
-        </div>
-        <div class="about-button-container">
-            <a class=" text button whatsapp about-button" type="button" href="https://wa.me/2347067681676">Whatsapp</a>
-        </div>
+<div class="about-content">
+    <div class="about-text">
+        <h2 class="text">About</h2>
+        <p class="text about-body">
+            WebBuildHQ is a web development company that builds beautiful websites and web applications to your specification,
+            just provide your information
+            (Home, About, Goods/Services, Contact, Pictures,  e.t.c),
+            choose a website name(domain name e.g. website.com) and WebBuildHQ will help you set your website up on
+            the internet.
+        </p>
+    </div>
+    <div class="about-button-container">
+        <a class=" text button whatsapp about-button" type="button" href="https://wa.me/2347067681676">Whatsapp</a>
     </div>
 </div>
 {% endblock %}
