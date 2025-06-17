@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, EmailField, PasswordField, SubmitField, BooleanField, URLField, TextAreaField, FileField
+from wtforms import StringField, EmailField, PasswordField, SubmitField, BooleanField, URLField, TextAreaField, FileField, IntegerField
 from wtforms.validators import DataRequired, Length, Email, InputRequired, URL
 
 
@@ -71,3 +71,27 @@ class SettingsForm(FlaskForm):
         render_kw={"class": "field signup-field", "placeholder": "e.g. name@email.com"}
     )
     submit = SubmitField(label="Submit", render_kw={"class": "text button signup-button signup-field"})
+
+
+class VerifyForm(FlaskForm):
+    input = IntegerField(
+        label="Type code here",
+        validators=[DataRequired()],
+        render_kw={"class": "field", "placeholder": "Code"}
+    )
+    submit = SubmitField(label="Submit", render_kw={"class": "text button signup-button signup-field"})
+
+
+class PasswordForm(FlaskForm):
+    password = PasswordField(
+        label="Your password",
+
+    )
+    second_password = PasswordField(
+        label="Re-enter password"
+
+    )
+    submit = SubmitField(
+        label="Change password",
+        render_kw={"class": "text button signup-button signup-field"}
+    )

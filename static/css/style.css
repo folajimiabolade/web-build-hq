@@ -394,6 +394,7 @@ a[type="button"] {
         padding: 1.5vh 3.6vw;
         font-size: 2.6vw;
         margin-top: 2vh;
+        cursor: pointer;
     }
 
     input::placeholder {
@@ -455,9 +456,9 @@ a[type="button"] {
     div.signup-card {
         display: flex;
         justify-content: center;
-        margin-top: 6vw;
         min-height: 45vh;
         margin-bottom: 22vh;
+        margin-top: 6vw;
     }
 
 
@@ -858,7 +859,6 @@ a[type="button"] {
 
     input.upload-picture {
         cursor: pointer;
-        margin-top: 4vh;
         margin-bottom: 2vh;
     }
 
@@ -997,6 +997,26 @@ a[type="button"] {
         height: 14rem;
         border: 0.42vw solid #E7F2E4;
         border-radius: 50%;
+    }
+
+    div.verify-holder {
+        display: flex;
+        justify-content: center;
+    }
+
+    p.verify-instruction {
+        max-width: 40vw;
+        font-size: 2.5vw;
+        text-align: center;
+        margin-top: 6vw;
+    }
+
+
+
+    p.upload-instruction {
+        margin-left: 3.5vw;
+        margin-top: 4vh;
+        font-size: 2.5vw;
     }
 
 }
@@ -1336,6 +1356,7 @@ a[type="button"] {
         font-size: 1.4vw;
         margin-top: 2vh;
         margin-bottom: 3vh;
+        cursor: pointer;
     }
 
     input::placeholder {
@@ -1803,7 +1824,6 @@ a[type="button"] {
 
     input.upload-picture {
         cursor: pointer;
-        margin-top: 8vh;
         margin-bottom: 2vh;
     }
 
@@ -1932,6 +1952,23 @@ a[type="button"] {
 
     a.sign-up.nav-link {
         text-wrap: nowrap;
+    }
+
+    div.verify-holder {
+        display: flex;
+        justify-content: center;
+        min-width: 100vw;
+    }
+
+    p.verify-instruction {
+        max-width: 28.5vw;
+        text-align: center;
+        margin-top: 5vw;
+    }
+
+    p.upload-instruction {
+        margin-left: 2vw;
+        margin-top: 8vh;
     }
 
 }

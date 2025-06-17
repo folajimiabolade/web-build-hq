@@ -4,6 +4,7 @@
 
 {% block user_body %}
     <div class="upload-container">
+        <p class="text upload-instruction">Image size must be a maximum of 2MB.</p>
         <form class="upload-form" enctype="multipart/form-data" method="post" action="{{ url_for('upload_picture') }}">
             {{ form.csrf_token }}
             {{ form.picture() }}<br>

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Verify Email{% endblock %}
+
+{% block head %}
+    <style>
+        div.verify-card::before {
+            content: "verify";
+            color: transparent;
+            background-image: url( "{{ url_for('static', filename='images/verify-email.jpg') }}" );
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            filter: brightness(0.2);
+            min-height: 100vh;
+            min-width: 100vw;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="verify-card">
+        <div class="verify-form">
+            <form action="{{ url_for('verify_email') }}" method="post" novalidate>
+                {{ form.csrf_token }}
+                {{ form.input() }}<br>
+                {% for error in form.input.errors %}
+                <p class="text add-instruction">{{ error }}</p>
+                {% endfor %}
+                {{ form.submit() }}
+            </form>
+        </div>
+    </div>
+{% endblock %}

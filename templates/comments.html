@@ -8,6 +8,10 @@
             box-sizing: border-box;
         }
 
+        p.testimony {
+            word-break: break-word;
+        }
+
         div.testimonials-container::before {
         content: "loco";
         background-image: url({{ url_for('static', filename='images/media-kit.jpg') }});
@@ -34,7 +38,7 @@
                     <p class="testimonials-text text testimonials-body">
                         <a class="testimonials-prompt" href="{{ url_for('sign_up') }}">
                             Sign up
-                        </a> to add a comment, upload a picture, test it out, come back here to find your comment, you can edit or delete a comment if you want.
+                        </a> to add a comment, upload a picture, test it out, come back here to find your comment, you can edit or delete a comment if you don't want it here again.
                     </p>
                 </div>
                 {% for comment in comments %}

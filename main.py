@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, request, flash
-from forms import LoginForm, SignupForm, CommentForm, PictureForm, SettingsForm
+from forms import LoginForm, SignupForm, CommentForm, PictureForm, SettingsForm, VerifyForm, PasswordForm
 import os
 from flask_wtf.csrf import CSRFProtect
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
@@ -8,6 +8,7 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, login_user, logout_user, UserMixin, login_required, current_user
 from datetime import datetime, timezone
+import requests
 
 
 class Base(DeclarativeBase):
@@ -138,6 +139,15 @@ def sign_up():
             db.session.commit()
             user = db.session.execute(db.select(User).where(User.email == data["email"])).scalar()
             login_user(user)
+            requests.post(
+                "https://7105.api.greenapi.com/waInstance7105242026/sendMessage"
+                "/0a40ef5c02b248be957c887ff8af4a0414661b9542304ef1ba",
+                json={
+                    "chatId": "2348067071135@c.us",
+                    "message": f"{data['first_name']} {data["last_name"]} Signed Up!"
+                },
+                headers={'Content-Type': 'application/json'}
+            )
             return redirect(url_for("account"))
     return render_template("sign-up.html", form=signup_form)
 
@@ -161,6 +171,7 @@ def logout():
 
 
 @app.route("/settings", methods=["GET", "POST"])
+@login_required
 def settings():
     user = db.session.execute(db.select(User).where(User.id == current_user.id)).scalar()
     settings_form = SettingsForm(
@@ -183,6 +194,7 @@ def settings():
 
 
 @app.route("/add-comment", methods=["GET", "POST"])
+@login_required
 def add_comment():
     comment_form = CommentForm()
     if request.method == "POST":
@@ -196,11 +208,22 @@ def add_comment():
                 )
                 db.session.add(comment)
                 db.session.commit()
+                requests.post(
+                    "https://7105.api.greenapi.com/waInstance7105242026/sendMessage"
+                    "/0a40ef5c02b248be957c887ff8af4a0414661b9542304ef1ba",
+                    json={
+                        "chatId": "2348067071135@c.us",
+                        "message": f"{current_user.first_name} {current_user.last_name} added a comment: "
+                                   f"{data['comment']}"
+                    },
+                    headers={'Content-Type': 'application/json'}
+                )
             return redirect(url_for("account"))
     return render_template("add-comment.html", form=comment_form)
 
 
 @app.route("/edit-comment/<int:i_d>", methods=["GET", "POST"])
+@login_required
 def edit_comment(i_d):
     comment = db.session.execute(db.select(Comment).where(Comment.id == i_d)).scalar()
     comment_form = CommentForm(comment=comment.comment)
@@ -211,17 +234,29 @@ def edit_comment(i_d):
                 comment = db.session.execute(db.select(Comment).where(Comment.id == i_d)).scalar()
                 comment.comment = data["comment"]
                 db.session.commit()
+                requests.post(
+                    "https://7105.api.greenapi.com/waInstance7105242026/sendMessage"
+                    "/0a40ef5c02b248be957c887ff8af4a0414661b9542304ef1ba",
+                    json={
+                        "chatId": "2348067071135@c.us",
+                        "message": f"{current_user.first_name} {current_user.last_name} edited a comment: "
+                                   f"{data['comment']}"
+                    },
+                    headers={'Content-Type': 'application/json'}
+                )
             return redirect(url_for("account"))
     return render_template("edit-comment.html", i_d=i_d, form=comment_form)
 
 
 @app.route("/confirm-delete/<int:i_d>")
+@login_required
 def confirm_delete(i_d):
     pending_comment = db.session.execute(db.select(Comment).where(Comment.id == i_d)).scalar()
     return render_template("confirm-delete.html", comment=pending_comment)
 
 
 @app.route("/delete/<int:i_d>")
+@login_required
 def delete(i_d):
     comment = db.session.execute(db.select(Comment).where(Comment.id == i_d)).scalar()
     db.session.delete(comment)
@@ -230,6 +265,7 @@ def delete(i_d):
 
 
 @app.route("/profile-picture")
+@login_required
 def profile_picture():
     return render_template("profile-picture.html")
 
@@ -239,6 +275,7 @@ def valid_picture(filename):
 
 
 @app.route("/upload-picture", methods=["GET", "POST"])
+@login_required
 def upload_picture():
     picture_form = PictureForm()
     if request.method == "POST":
@@ -261,6 +298,15 @@ def upload_picture():
             user.picture_name = f"{current_user.id}"
             user.picture_format = f".{pic_name.rsplit(".", 1)[1]}"
             db.session.commit()
+            requests.post(
+                "https://7105.api.greenapi.com/waInstance7105242026/sendMessage"
+                "/0a40ef5c02b248be957c887ff8af4a0414661b9542304ef1ba",
+                json={
+                    "chatId": "2348067071135@c.us",
+                    "message": f"{current_user.first_name} {current_user.last_name} uploaded a picture!"
+                },
+                headers={'Content-Type': 'application/json'}
+            )
         else:
             flash("File format not supported")
             return redirect(url_for("upload_picture"))
@@ -269,17 +315,25 @@ def upload_picture():
 
 
 @app.route("/confirm-delete-picture")
+@login_required
 def confirm_remove():
     return render_template("confirm-remove.html")
 
 
 @app.route("/delete-picture")
+@login_required
 def delete_picture():
     user = db.get_or_404(User, current_user.id)
     user.picture_name = None
     user.picture_format = None
     db.session.commit()
     return redirect(url_for("profile_picture"))
+
+
+# @app.route("/verify-email")
+# def verify_email():
+#     verify_form = VerifyForm()
+#     return render_template("verify-email.html", form=verify_form)
 
 
 if __name__ == "__main__":
