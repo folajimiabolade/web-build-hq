@@ -985,6 +985,20 @@ a[type="button"] {
         /* border: 2px solid #E7F2E4; */
     }
 
+    svg.placeholder-svg {
+        width: 14rem;
+        height: 14rem;
+        color: #E7F2E4;
+        filter: brightness(0.67);
+    }
+
+    div.comment-placeholder {
+        width: 14rem;
+        height: 14rem;
+        border: 0.42vw solid #E7F2E4;
+        border-radius: 50%;
+    }
+
 }
 
 @media (orientation: landscape) {
@@ -1907,6 +1921,13 @@ a[type="button"] {
         height: 10.5rem;
         border-radius: 50%;
         /* border: 2px solid #E7F2E4; */
+    }
+
+    svg.placeholder-svg {
+        width: 10.5rem;
+        height: 10.5rem;
+        color: #E7F2E4;
+        filter: brightness(0.67);
     }
 
     a.sign-up.nav-link {
