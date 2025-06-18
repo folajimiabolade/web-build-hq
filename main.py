@@ -3,12 +3,17 @@ from forms import LoginForm, SignupForm, CommentForm, PictureForm, SettingsForm,
 import os
 from flask_wtf.csrf import CSRFProtect
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
-from sqlalchemy import String, Integer, DateTime, ForeignKey
+from sqlalchemy import String, Integer, DateTime, ForeignKey, text
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, login_user, logout_user, UserMixin, login_required, current_user
 from datetime import datetime, timezone
 import requests
+from dotenv import load_dotenv
+import cloudinary
+from cloudinary import CloudinaryImage
+import cloudinary.uploader
+import cloudinary.api
 
 
 class Base(DeclarativeBase):
@@ -29,6 +34,15 @@ app.config["UPLOAD_FOLDER"] = "static/images/uploads"
 ALLOWED_EXTENSIONS = {"jpg", "jpeg", "png", "webp", "jfif"}
 app.config["MAX_CONTENT_LENGTH"] = 2 * 1000 * 1000
 
+url = os.environ.get("API-URL")
+i_d_ = os.environ.get("ID-INSTANCE")
+key = os.environ.get("API-TOKEN-INSTANCE")
+number = os.environ.get("NUMBER")
+
+load_dotenv()
+
+config = cloudinary.config(secure=True)
+
 
 class User(UserMixin, db.Model):
     __tablename__ = "users"
@@ -37,8 +51,8 @@ class User(UserMixin, db.Model):
     last_name: Mapped[str] = mapped_column(String())
     email: Mapped[str] = mapped_column(String(), unique=True)
     password: Mapped[str] = mapped_column(String())
-    picture_name: Mapped[str] = mapped_column(String(), nullable=True)
-    picture_format: Mapped[str] = mapped_column(String(), nullable=True)
+    picture_number: Mapped[int] = mapped_column(Integer(), default=0, server_default=text("0"))
+    picture_url: Mapped[str] = mapped_column(String(), nullable=True)
     comments = relationship("Comment", back_populates="user")
 
 
@@ -140,10 +154,9 @@ def sign_up():
             user = db.session.execute(db.select(User).where(User.email == data["email"])).scalar()
             login_user(user)
             requests.post(
-                "https://7105.api.greenapi.com/waInstance7105242026/sendMessage"
-                "/0a40ef5c02b248be957c887ff8af4a0414661b9542304ef1ba",
+                f"{url}/waInstance{i_d_}/sendMessage/{key}",
                 json={
-                    "chatId": "2348067071135@c.us",
+                    "chatId": f"{number}@c.us",
                     "message": f"{data['first_name']} {data["last_name"]} Signed Up!"
                 },
                 headers={'Content-Type': 'application/json'}
@@ -209,10 +222,9 @@ def add_comment():
                 db.session.add(comment)
                 db.session.commit()
                 requests.post(
-                    "https://7105.api.greenapi.com/waInstance7105242026/sendMessage"
-                    "/0a40ef5c02b248be957c887ff8af4a0414661b9542304ef1ba",
+                    f"{url}/waInstance{i_d_}/sendMessage/{key}",
                     json={
-                        "chatId": "2348067071135@c.us",
+                        "chatId": f"{number}@c.us",
                         "message": f"{current_user.first_name} {current_user.last_name} added a comment: "
                                    f"{data['comment']}"
                     },
@@ -235,10 +247,9 @@ def edit_comment(i_d):
                 comment.comment = data["comment"]
                 db.session.commit()
                 requests.post(
-                    "https://7105.api.greenapi.com/waInstance7105242026/sendMessage"
-                    "/0a40ef5c02b248be957c887ff8af4a0414661b9542304ef1ba",
+                    f"{url}/waInstance{i_d_}/sendMessage/{key}",
                     json={
-                        "chatId": "2348067071135@c.us",
+                        "chatId": f"{number}@c.us",
                         "message": f"{current_user.first_name} {current_user.last_name} edited a comment: "
                                    f"{data['comment']}"
                     },
@@ -288,22 +299,22 @@ def upload_picture():
             flash("No file selected")
             return redirect(url_for("upload_picture"))
         if profile_pic and valid_picture(pic_name):
-            profile_pic.save(
-                os.path.join(
-                    app.config["UPLOAD_FOLDER"],
-                    f"{current_user.id}.{pic_name.rsplit(".", 1)[1]}"
-                )
-            )
+            lad = db.get_or_404(User, current_user.id)
+            picture_no = lad.picture_number
+            cloudinary.uploader.upload(profile_pic, public_id=f"{current_user.id}-{picture_no}", unique_filename=False, overwrite=True)
+            src_url = CloudinaryImage(f"{current_user.id}-{picture_no}").build_url()
+            print(src_url)
             user = db.get_or_404(User, current_user.id)
-            user.picture_name = f"{current_user.id}"
-            user.picture_format = f".{pic_name.rsplit(".", 1)[1]}"
+            user.picture_url = src_url.rsplit("/", 1)[0] + "/q_auto/f_auto/c_scale,w_500/" + src_url.rsplit("/", 1)[1]
+            user.picture_number = picture_no + 1
             db.session.commit()
             requests.post(
-                "https://7105.api.greenapi.com/waInstance7105242026/sendMessage"
-                "/0a40ef5c02b248be957c887ff8af4a0414661b9542304ef1ba",
+                f"{url}/waInstance{i_d_}/sendFileByUrl/{key}",
                 json={
-                    "chatId": "2348067071135@c.us",
-                    "message": f"{current_user.first_name} {current_user.last_name} uploaded a picture!"
+                    "chatId": f"{number}@c.us",
+                    "urlFile": f"{current_user.picture_url}",
+                    "fileName": f"{current_user.first_name}-{current_user.last_name}.png",
+                    "caption": f"{current_user.first_name} {current_user.last_name} uploaded a picture."
                 },
                 headers={'Content-Type': 'application/json'}
             )

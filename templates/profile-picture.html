@@ -5,8 +5,8 @@
 {% block user_body %}
     <h2 class="text picture-greeting">Profile Picture</h2>
     <div class="picture-holder">
-        {% if current_user.picture_name %}
-            <img class="profile-picture" alt="profile-picture" src="{{ url_for('static', filename='images/uploads/' ~ current_user.picture_name ~ current_user.picture_format) }}">
+        {% if current_user.picture_url %}
+            <img class="profile-picture" alt="profile-picture" src="{{ current_user.picture_url }}">
         {% else %}
             <div class="picture-placeholder">
                 <svg class="bi bi-person text icon-placeholder" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">

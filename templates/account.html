@@ -6,9 +6,9 @@
     <h2 class="text user-greeting">{{ current_user.first_name }}'s Account</h2>
     <div class="picture-testimony">
 <!--        <div class="picture-container">-->
-            {% if current_user.picture_name %}
+            {% if current_user.picture_url %}
             <a class="text picture-button" type="button" href="{{ url_for('profile_picture') }}">
-                <img class="account-picture" alt="picture" src="{{ url_for('static', filename='images/uploads/' ~ current_user.picture_name ~ current_user.picture_format) }}">
+                <img class="account-picture" alt="picture" src="{{ current_user.picture_url }}">
                 <p class="picture-prompt">  Profile Picture</p>
             </a>
             {% else %}
