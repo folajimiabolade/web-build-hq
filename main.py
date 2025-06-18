@@ -335,8 +335,7 @@ def confirm_remove():
 @login_required
 def delete_picture():
     user = db.get_or_404(User, current_user.id)
-    user.picture_name = None
-    user.picture_format = None
+    user.picture_url = None
     db.session.commit()
     return redirect(url_for("profile_picture"))
 
