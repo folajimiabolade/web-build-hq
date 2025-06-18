@@ -16,7 +16,7 @@
         {% endif %}
     </div>
     <div class="picture-options">
-        {% if current_user.picture_name %}
+        {% if current_user.picture_url %}
             <div class="new-picture">
                 <a class="text update-picture" type="button" href="{{ url_for('upload_picture') }}">
                     <svg class="bi bi-plus-lg picture-change" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
