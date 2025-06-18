@@ -46,7 +46,7 @@
                         {% if comment.user.picture_url %}
                             <img class="testimony-image"
                                  alt="{{ comment.user.first_name }} {{ comment.user.last_name }}"
-                                 src="{{ current_user.picture_url }}"
+                                 src="{{ comment.user.picture_url }}"
                             >
                         {% else %}
                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle placeholder-svg" viewBox="0 0 16 16">
