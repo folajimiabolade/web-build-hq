@@ -297,10 +297,10 @@ def upload_picture():
             flash("No file selected")
             return redirect(url_for("upload_picture"))
         if profile_pic and valid_picture(pic_name):
+            if current_user.picture_url:
+                cloudinary.uploader.destroy(f"{current_user.id}-{current_user.picture_number}")
             lad = db.get_or_404(User, current_user.id)
             picture_no = lad.picture_number
-            if current_user.picture_url:
-                cloudinary.uploader.destroy(f"{current_user.id}-{picture_no}")
             cloudinary.uploader.upload(profile_pic, public_id=f"{current_user.id}-{picture_no}", unique_filename=False, overwrite=True)
             pic_url = CloudinaryImage(f"{current_user.id}-{picture_no}").build_url()
             user = db.get_or_404(User, current_user.id)
