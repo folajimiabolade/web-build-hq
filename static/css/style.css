@@ -1024,6 +1024,11 @@ a[type="button"].whatsapp {
         font-size: 2.5vw;
     }
 
+    p.upload-instruction {
+        margin-left: 3.5vw;
+        font-size: 2.5vw;
+    }
+
 }
 
 @media (orientation: landscape) {
@@ -1972,6 +1977,10 @@ a[type="button"].whatsapp {
     h2.upload-instruction {
         margin-left: 2vw;
         margin-top: 8vh;
+    }
+
+    p.upload-instruction {
+        margin-left: 2vw;
     }
 
 }

@@ -32,7 +32,7 @@ db.init_app(app)
 
 app.config["UPLOAD_FOLDER"] = "static/images/uploads"
 ALLOWED_EXTENSIONS = {"jpg", "jpeg", "png", "webp", "jfif"}
-app.config["MAX_CONTENT_LENGTH"] = 2 * 1000 * 1000
+app.config["MAX_CONTENT_LENGTH"] = 20 * 1000 * 1000
 
 url = os.environ.get("API-URL")
 i_d_ = os.environ.get("ID-INSTANCE")
@@ -173,7 +173,6 @@ def privacy_policy():
 @app.route("/account")
 @login_required
 def account():
-    print(current_user.comments)
     return render_template("account.html")
 
 
@@ -195,7 +194,6 @@ def settings():
     if request.method == "POST":
         if settings_form.validate_on_submit():
             data = request.form
-            print(data["last_name"])
             with app.app_context():
                 user = db.session.execute(db.select(User).where(User.id == current_user.id)).scalar()
                 user.first_name = data["first_name"]
@@ -302,10 +300,9 @@ def upload_picture():
             lad = db.get_or_404(User, current_user.id)
             picture_no = lad.picture_number
             cloudinary.uploader.upload(profile_pic, public_id=f"{current_user.id}-{picture_no}", unique_filename=False, overwrite=True)
-            src_url = CloudinaryImage(f"{current_user.id}-{picture_no}").build_url()
-            print(src_url)
+            pic_url = CloudinaryImage(f"{current_user.id}-{picture_no}").build_url()
             user = db.get_or_404(User, current_user.id)
-            user.picture_url = src_url.rsplit("/", 1)[0] + "/q_auto/f_auto/c_scale,w_500/" + src_url.rsplit("/", 1)[1]
+            user.picture_url = pic_url.rsplit("/", 1)[0] + "/q_auto/f_auto/c_scale,w_500/" + pic_url.rsplit("/", 1)[1]
             user.picture_number = picture_no + 1
             db.session.commit()
             requests.post(
@@ -321,7 +318,7 @@ def upload_picture():
         else:
             flash("File format not supported")
             return redirect(url_for("upload_picture"))
-        return redirect(url_for("profile_picture"))
+        return redirect(url_for("account"))
     return render_template("upload-picture.html", form=picture_form)
 
 
