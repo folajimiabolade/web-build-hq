@@ -298,7 +298,7 @@ def upload_picture():
             return redirect(url_for("upload_picture"))
         if profile_pic and valid_picture(pic_name):
             if current_user.picture_url:
-                cloudinary.uploader.destroy(f"{current_user.id}-{current_user.picture_number}")
+                cloudinary.uploader.destroy(f"{current_user.id}-{current_user.picture_number - 1}")
             lad = db.get_or_404(User, current_user.id)
             picture_no = lad.picture_number
             cloudinary.uploader.upload(profile_pic, public_id=f"{current_user.id}-{picture_no}", unique_filename=False, overwrite=True)
