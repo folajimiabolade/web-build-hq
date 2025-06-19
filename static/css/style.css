@@ -162,7 +162,7 @@ a[type="button"].whatsapp {
         display: flex;
         flex-direction: column;
         min-height: 67vh;
-        padding: 0vh 25vw;
+        padding: 0vh 20vw;
         font-size: 3vw;
         margin-top: 4vw;
     }
@@ -1143,10 +1143,10 @@ a[type="button"].whatsapp {
         flex-direction: column;
         margin-top: 0vw;
         align-items: center;
-        padding: 15vh 25vw;
+        padding: 15vh 20vw;
         font-size: 2vw;
         margin-top: 0vh;
-        min-width: 50vw;
+        min-width: 60vw;
         min-height: 100vh;
     }
 
