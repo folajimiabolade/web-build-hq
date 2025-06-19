@@ -32,7 +32,7 @@ db.init_app(app)
 
 app.config["UPLOAD_FOLDER"] = "static/images/uploads"
 ALLOWED_EXTENSIONS = {"jpg", "jpeg", "png", "webp", "jfif"}
-app.config["MAX_CONTENT_LENGTH"] = 20 * 1000 * 1000
+app.config["MAX_CONTENT_LENGTH"] = 8 * 1000 * 1000
 
 url = os.environ.get("API-URL")
 i_d_ = os.environ.get("ID-INSTANCE")
