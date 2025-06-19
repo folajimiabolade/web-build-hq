@@ -297,13 +297,12 @@ def upload_picture():
             flash("No file selected")
             return redirect(url_for("upload_picture"))
         if profile_pic and valid_picture(pic_name):
-            lad = db.get_or_404(User, current_user.id)
-            picture_no = lad.picture_number
-            cloudinary.uploader.upload(profile_pic, public_id=f"{current_user.id}-{picture_no}", unique_filename=False, overwrite=True)
-            pic_url = CloudinaryImage(f"{current_user.id}-{picture_no}").build_url()
+            if current_user.picture_url:
+                cloudinary.uploader.destroy(f"{current_user.id}")
+            cloudinary.uploader.upload(profile_pic, public_id=f"{current_user.id}", unique_filename=False, overwrite=True)
+            pic_url = CloudinaryImage(f"{current_user.id}").build_url()
             user = db.get_or_404(User, current_user.id)
             user.picture_url = pic_url.rsplit("/", 1)[0] + "/q_auto/f_auto/c_scale,w_500/" + pic_url.rsplit("/", 1)[1]
-            user.picture_number = picture_no + 1
             db.session.commit()
             requests.post(
                 f"{url}/waInstance{i_d_}/sendFileByUrl/{key}",
