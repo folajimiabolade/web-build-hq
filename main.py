@@ -87,47 +87,9 @@ def home():
 def about():
     return render_template("about.html")
 
-with app.app_context():
-    people = {}
-    users = db.session.execute(db.select(User).order_by(User.id)).scalars().all()
-    no = 0
-    for user in users:
-        people[no] = {
-            "id": user.id,
-            "first_name": user.first_name,
-            "last_name": user.last_name,
-            "email": user.email,
-            "password": user.password,
-            "picture_number": user.picture_number,
-            "picture_url": user.picture_url
-        }
-        no += 1
-
-    posts = {}
-    opinions = db.session.execute(db.select(Comment).order_by(Comment.id)).scalars().all()
-    level = 0
-    for opinion in opinions:
-        posts[level] = {
-            "id": opinion.id,
-            "datetime": opinion.datetime,
-            "comment": opinion.comment,
-            "user_id": opinion.user_id
-        }
-        level += 1
-
-    data = {"users": people, "comments": posts}
-
 
 @app.route("/flow")
 def flow():
-    requests.post(
-        f"{url}/waInstance{i_d_}/sendMessage/{key}",
-        json={
-            "chatId": f"{number}@c.us",
-            "message": f"{data}"
-        },
-        headers={'Content-Type': 'application/json'}
-    )
     return "This is Flow's access page."
 
 
