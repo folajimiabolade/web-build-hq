@@ -1029,6 +1029,21 @@ a[type="button"].whatsapp {
         font-size: 2.5vw;
     }
 
+    div.head-holder {
+        display: flex;
+    }
+
+    button.menu {
+        margin-right: 3.5vw;
+        background: #2b3035;
+        font-size: 3.5vw;
+        border: none;
+    }
+
+    div.links-container.hide {
+        display: none;
+    }
+
 }
 
 @media (orientation: landscape) {
@@ -1981,6 +1996,10 @@ a[type="button"].whatsapp {
 
     p.upload-instruction {
         margin-left: 2vw;
+    }
+
+    button.menu {
+        display: none;
     }
 
 }
