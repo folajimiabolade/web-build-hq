@@ -1,5 +1,5 @@
 # Import necessary libraries and modules
-# flask-wtforms are used to render forms with cross-site-request-forgery protection to the front-end(web page)
+# flask-wtforms are used to render forms with cross-site-request-forgery protection on the front-end(web page)
 # https://flask-wtf.readthedocs.io/en/0.15.x/quickstart/
 from flask_wtf import FlaskForm
 from wtforms import StringField, EmailField, PasswordField, SubmitField, BooleanField, URLField, TextAreaField, FileField, IntegerField
