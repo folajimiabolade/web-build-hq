@@ -8,6 +8,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Dancing+Script:wght@400..700&family=Edu+NSW+ACT+Cursive:wght@400..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!--  Jinja templating can be used to copy sections of web pages and paste them  -->
+    <!--  on other web pages(template inheritance)  -->
+    <!--  https://flask.palletsprojects.com/en/stable/patterns/templateinheritance/  -->
+    <!--  Jinja templating can also be used to add raw python code into html code  -->
+    <!--  Jinja templating works with python concepts like variables, for loops, if statements e.t.c.  -->
+    <!--  Whenever you see {% or {{ opening tag and %} or }} closing tag in any html code in this project,  -->
+    <!--  just know that you are working with jinja  -->
+    <!--  https://jinja.palletsprojects.com/en/stable/templates/#variables  -->
+    <!--  https://jinja.palletsprojects.com/en/stable/templates/#for  -->
+    <!--  https://jinja.palletsprojects.com/en/stable/templates/#if  -->
     <title>{% block title %}{% endblock %}</title>
     {% block head %}{% endblock %}
 </head>
