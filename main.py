@@ -4,7 +4,7 @@
 from flask import Flask, render_template, redirect, url_for, request, flash
 # os is where the secrets are saved, like developer passwords and api keys
 import os
-# Import forms from the forms.py file(object oriented programming)
+# Import forms from the forms.py file
 from forms import LoginForm, SignupForm, CommentForm, PictureForm, SettingsForm, VerifyForm, PasswordForm
 # CSRFProtect protects from cross-site-request-forgery https://flask-wtf.readthedocs.io/en/0.15.x/csrf/
 from flask_wtf.csrf import CSRFProtect
