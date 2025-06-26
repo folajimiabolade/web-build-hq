@@ -1,5 +1,7 @@
 var screenOrientation = window.matchMedia("(orientation: portrait)");
+
 screenOrientation.addEventListener("change", detectChange)
+
 function detectChange(portraitState) {
     if (portraitState.matches) {
         $("div.links-container").css("display", "none");
