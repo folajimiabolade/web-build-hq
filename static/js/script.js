@@ -4,7 +4,8 @@ do not hide the navigation bar on landscape mode
 */
 // Check for clicks on the 'Menu' button
 $("button.menu").click(function () {
-    // Check if the navigation bar is showing(display: flex;) or if it's hidden(display: none;)
+    // Check if the navigation bar is showing(display: flex) or if it's hidden(display: none)
+    // and change the 'Menu' button's icon accordingly
     if ($("div.links-container").css("display") === "flex") {
         $("svg.menu-icon").html([
             '<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 ',
@@ -19,7 +20,7 @@ $("button.menu").click(function () {
             '0 0 1-.708-.708L7.293 8z"/> Menu'
         ].join(""));
     }
-    // Animate the show/hide process
+    // Animate the navigation bar's show/hide process to slide out/in
     $("div.links-container").slideToggle();
 })
 
