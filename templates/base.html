@@ -32,7 +32,7 @@
 
                 </div>
 
-                <div class="links-container hide">
+                <div class="links-container" style="display: none;">
                     <a type="button" class="home text nav-link" href="{{ url_for('home') }}">Home</a>
                     <a type="button" class="about text nav-link" href="{{ url_for('about') }}">About</a>
                     <a type="button" class="testimonials text nav-link" href="{{ url_for('comments') }}">Comments</a>
@@ -68,6 +68,7 @@
             </div>
         </div>
     </div>
-    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>

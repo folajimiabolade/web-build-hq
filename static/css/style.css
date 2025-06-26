@@ -95,7 +95,7 @@ a[type="button"].whatsapp {
     }
 
     div.links-container {
-        flex: 1;
+        /* flex: 1; */
         /* background: red; */
         display: flex;
         flex-direction: column;
@@ -1040,10 +1040,6 @@ a[type="button"].whatsapp {
         border: none;
     }
 
-    div.links-container.hide {
-        display: none;
-    }
-
 }
 
 @media (orientation: landscape) {
@@ -1072,6 +1068,7 @@ a[type="button"].whatsapp {
         display: flex;
         gap: 0vw;
         padding: 2vh 0vw;
+        margin-left: 2vw;
     }
 
     svg.logo {
@@ -2000,6 +1997,11 @@ a[type="button"].whatsapp {
 
     button.menu {
         display: none;
+    }
+
+    div.head-holder {
+        flex: 1;
+        display: flex;
     }
 
 }
