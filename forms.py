@@ -1,18 +1,9 @@
+# Import necessary libraries and modules
+# flask-wtforms are used to render forms with cross-site-request-forgery protection to the front-end(web page)
+# https://flask-wtf.readthedocs.io/en/0.15.x/quickstart/
 from flask_wtf import FlaskForm
 from wtforms import StringField, EmailField, PasswordField, SubmitField, BooleanField, URLField, TextAreaField, FileField, IntegerField
 from wtforms.validators import DataRequired, Length, Email, InputRequired, URL
-
-
-class LoginForm(FlaskForm):
-    email = EmailField(
-        validators=[DataRequired()],
-        render_kw={"class": "field", "placeholder": "", "autocomplete": "email"}
-    )
-    password = PasswordField(
-        validators=[DataRequired()],
-        render_kw={"class": "field", "placeholder": ""}
-    )
-    button = SubmitField(label="Login", render_kw={"class": "text button login-button"})
 
 
 class SignupForm(FlaskForm):
@@ -38,6 +29,18 @@ class SignupForm(FlaskForm):
     )
     button = SubmitField(label="Sign Up", render_kw={"class": "text button signup-button signup-field"})
     submit = SubmitField(label="Submit", render_kw={"class": "text button signup-button signup-field"})
+
+
+class LoginForm(FlaskForm):
+    email = EmailField(
+        validators=[DataRequired()],
+        render_kw={"class": "field", "placeholder": "", "autocomplete": "email"}
+    )
+    password = PasswordField(
+        validators=[DataRequired()],
+        render_kw={"class": "field", "placeholder": ""}
+    )
+    button = SubmitField(label="Login", render_kw={"class": "text button login-button"})
 
 
 class CommentForm(FlaskForm):

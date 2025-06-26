@@ -1,15 +1,33 @@
+# Import necessary libraries and modules
+# flask creates the server that communicates with the user
+# https://flask.palletsprojects.com/en/stable/quickstart/
 from flask import Flask, render_template, redirect, url_for, request, flash
-from forms import LoginForm, SignupForm, CommentForm, PictureForm, SettingsForm, VerifyForm, PasswordForm
+# os is where the secrets are saved, like developer passwords and api keys
 import os
+# Import forms from the forms.py file(object oriented programming)
+from forms import LoginForm, SignupForm, CommentForm, PictureForm, SettingsForm, VerifyForm, PasswordForm
+# CSRFProtect protects from cross-site-request-forgery https://flask-wtf.readthedocs.io/en/0.15.x/csrf/
 from flask_wtf.csrf import CSRFProtect
+# sqlalchemy creates the relational database where information like usernames, emails, comments are stored
+# https://flask-sqlalchemy.readthedocs.io/en/stable/quickstart/
+# https://docs.sqlalchemy.org/en/20/orm/quickstart.html
+# https://docs.sqlalchemy.org/en/20/orm/basic_relationships.html
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 from sqlalchemy import String, Integer, DateTime, ForeignKey, text
 from flask_sqlalchemy import SQLAlchemy
+# werkzeug.security hashes passwords
+# https://werkzeug.palletsprojects.com/en/stable/utils/#werkzeug.security.generate_password_hash
 from werkzeug.security import generate_password_hash, check_password_hash
+# flask_login logs users in and out https://flask-login.readthedocs.io/en/latest/
 from flask_login import LoginManager, login_user, logout_user, UserMixin, login_required, current_user
+# The python datetime module
 from datetime import datetime, timezone
+# API requests are made through the requests module
 import requests
+# load_dotenv loads data stored as environment variables(e.g. secrets like the developer passwords or api keys)
 from dotenv import load_dotenv
+# cloudinary stores pictures on the cloud
+# https://cloudinary.com/documentation/dev_kickstart
 import cloudinary
 from cloudinary import CloudinaryImage
 import cloudinary.uploader
@@ -105,26 +123,9 @@ def contact():
 
 @app.route("/comments")
 def comments():
+    # Display all the comments in the database on the web page, starting with the most recent
     posts = db.session.execute(db.select(Comment).order_by(Comment.id.desc())).scalars().all()
     return render_template("comments.html", comments=posts)
-
-
-@app.route("/login", methods=["GET", "POST"])
-def login():
-    login_form = LoginForm()
-    if request.method == "POST":
-        if login_form.validate_on_submit():
-            data = request.form
-            user = db.session.execute(db.select(User).where(User.email == data["email"])).scalar()
-            if user:
-                if check_password_hash(user.password, data["password"]):
-                    login_user(user)
-                    return redirect(url_for("account"))
-                flash("Invalid Password, Please Try Again.")
-                return redirect(url_for("login"))
-            flash("Account Not Found.")
-            return redirect(url_for("login"))
-    return render_template("login.html", form=login_form)
 
 
 @app.route("/sign-up", methods=["GET", "POST"])
@@ -165,9 +166,27 @@ def sign_up():
     return render_template("sign-up.html", form=signup_form)
 
 
-@app.route("/privacy-policy")
-def privacy_policy():
-    return render_template("privacy-policy.html")
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    login_form = LoginForm()
+    if request.method == "POST":
+        if login_form.validate_on_submit():
+            data = request.form
+            user = db.session.execute(db.select(User).where(User.email == data["email"])).scalar()
+            if user:
+                if check_password_hash(user.password, data["password"]):
+                    login_user(user)
+                    return redirect(url_for("account"))
+                flash("Invalid Password, Please Try Again.")
+                return redirect(url_for("login"))
+            flash("Account Not Found.")
+            return redirect(url_for("login"))
+    return render_template("login.html", form=login_form)
+
+
+# @app.route("/privacy-policy")
+# def privacy_policy():
+#     return render_template("privacy-policy.html")
 
 
 @app.route("/account")
@@ -320,7 +339,7 @@ def upload_picture():
         else:
             flash("File format not supported")
             return redirect(url_for("upload_picture"))
-        return redirect(url_for("account"))
+        return redirect(url_for("upload_picture"))
     return render_template("upload-picture.html", form=picture_form)
 
 
