@@ -24,8 +24,14 @@ $("button.menu").click(function () {
     $("div.links-container").slideToggle();
 })
 
+
+// If the page orientation changes from landscape to portrait mode
+// and the navigation bar is not hidden, hide the navigation bar, and
+// if the page orientation changes from portrait to landscape mode and the
+// navigation bar is hidden, unhide the navigation bar
 var screenOrientation = window.matchMedia("(orientation: portrait)");
 screenOrientation.addEventListener("change", detectChange)
+
 
 function detectChange(portraitState) {
     if (portraitState.matches) {
@@ -42,5 +48,6 @@ function detectChange(portraitState) {
         }
     }
 }
+
 
 detectChange(screenOrientation);
