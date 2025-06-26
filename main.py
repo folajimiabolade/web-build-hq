@@ -20,7 +20,7 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 # flask_login logs users in and out https://flask-login.readthedocs.io/en/latest/
 from flask_login import LoginManager, login_user, logout_user, UserMixin, login_required, current_user
-# The python datetime module
+# The python datetime module is used for getting the time that comments were made
 from datetime import datetime, timezone
 # API requests are made through the requests module
 import requests
