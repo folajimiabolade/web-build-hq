@@ -26,7 +26,7 @@ from datetime import datetime, timezone
 import requests
 # load_dotenv loads data stored as environment variables(e.g. secrets like the developer passwords or api keys)
 from dotenv import load_dotenv
-# cloudinary stores pictures on the cloud
+# cloudinary stores pictures uploaded by users
 # https://cloudinary.com/documentation/dev_kickstart
 import cloudinary
 from cloudinary import CloudinaryImage
