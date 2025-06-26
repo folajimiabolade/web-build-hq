@@ -76,7 +76,6 @@ a[type="button"].whatsapp {
         padding-left: 3.5vw;
         color: #E7F2E4;
         flex: 1;
-        /* background: yellow; */
         flex-grow: 0;
         min-height: 7.46vw;
         min-width: 7.46vw;
@@ -85,7 +84,6 @@ a[type="button"].whatsapp {
 
     p.brand-text {
         flex: 1;
-        /* background: blue; */
         padding: 0;
         margin: 0;
         font-size: 6.25vw;
@@ -96,7 +94,6 @@ a[type="button"].whatsapp {
 
     div.links-container {
         /* flex: 1; */
-        /* background: red; */
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -105,48 +102,40 @@ a[type="button"].whatsapp {
 
     a.home {
         flex: 1;
-        /* background: blueviolet; */
         flex-grow: 0;
     }
 
     a.about {
         flex: 1;
-        /* background: midnightblue; */
         flex-grow: 0;
     }
 
     a.designs {
         flex: 1;
-        /* background: violet; */
         flex-grow: 0;
     }
 
     a.testimonials {
         flex: 1;
-        /* background: green; */
         flex-grow: 0;
     }
 
     a.contact {
         flex: 1;
-        /* background: purple; */
         flex-grow: 0;
     }
 
     a.login {
         flex: 1;
-        /* background: brown; */
         flex-grow: 0;
     }
 
     a.account {
         flex: 1;
-        /* background: purple; */
     }
 
     a.logout {
         flex: 1;
-        /* background: blue; */
     }
 
     a.nav-link {
@@ -317,20 +306,17 @@ a[type="button"].whatsapp {
     }
 
     p.copyright {
-        /* background: green; */
         font-size: 2.5vw;
         margin-left: 3.5vw;
     }
 
     div.brand {
         display: flex;
-        /* background: black; */
     }
 
     svg.footer-logo {
         width: 5.72vw;
         height: 5.72vw;
-        /* background: red; */
         min-width: 5.72vw;
         min-height: 5.72vw;
         margin: 0vw;
@@ -338,7 +324,6 @@ a[type="button"].whatsapp {
 
     p.footer-brand-text {
         font-size: 4.8vw;
-        /* background: blue; */
         margin: 0vh 0vw;
         padding: 0vw;
         white-space: pre;
@@ -346,7 +331,6 @@ a[type="button"].whatsapp {
     }
 
     a.footer-link {
-        /* background: midnightblue; */
         margin-right: 3.5vw;
         font-size: 1.875vw;
         text-align: end;
@@ -1076,7 +1060,6 @@ a[type="button"].whatsapp {
         padding: ;
         color: #E7F2E4;
         flex: 1;
-        /* background: yellow; */
         flex-grow: 0;
         min-width: 3.8vw;
 
@@ -1084,7 +1067,6 @@ a[type="button"].whatsapp {
 
     p.brand-text {
         flex: 1;
-        /* background: blue; */
         padding: 0;
         margin: 0;
         font-size: 2.7vw;
@@ -1095,7 +1077,6 @@ a[type="button"].whatsapp {
 
     div.links-container {
         flex: 1;
-        /* background: red; */
         display: flex;
         justify-content: flex-end;
         margin-right: 2vw;
@@ -1105,42 +1086,34 @@ a[type="button"].whatsapp {
 
     a.home {
         flex: 1;
-        /* background: blueviolet; */
     }
 
     a.about {
         flex: 1;
-        /* background: midnightblue; */
     }
 
     a.designs {
         flex: 1;
-        /* background: violet; */
     }
 
     a.testimonials {
         flex: 1;
-        /* background: green; */
     }
 
     a.contact {
         flex: 1;
-        /* background: purple; */
     }
 
     a.login {
         flex: 1;
-        /* background: blue; */
     }
 
     a.account {
         flex: 1;
-        /* background: yellow; */
     }
 
     a.logout {
         flex: 1;
-        /* background: red; */
     }
 
     a.nav-link {
@@ -1332,7 +1305,6 @@ a[type="button"].whatsapp {
     svg.footer-logo {
         width: 2.86vw;
         height: 2.86vw;
-        /* background: red; */
         min-width: 2.86vw;
         min-height: 2.86vw;
         margin: 0vw;
