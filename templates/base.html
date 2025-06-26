@@ -38,7 +38,6 @@
                     <a type="button" class="testimonials text nav-link" href="{{ url_for('comments') }}">Comments</a>
                     <a type="button" class="contact text nav-link" href="{{ url_for('contact') }}">Contact</a>
                     {% if current_user.is_authenticated %}
-                    <a type="button" class="account text nav-link" href="{{ url_for('account') }}">Account</a>
                     <a type="button" class="logout text nav-link" href="{{ url_for('logout') }}">Logout</a>
                     {% else %}
                     <a type="button" class="sign-up text nav-link" href="{{ url_for('sign_up') }}">Sign up</a>

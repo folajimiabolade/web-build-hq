@@ -1024,6 +1024,10 @@ a[type="button"].whatsapp {
         border: none;
     }
 
+    div.user-body {
+        min-height: 80vh;
+    }
+
 }
 
 @media (orientation: landscape) {
