@@ -339,7 +339,7 @@ def upload_picture():
         else:
             flash("File format not supported")
             return redirect(url_for("upload_picture"))
-        return redirect(url_for("upload_picture"))
+        return redirect(url_for("profile_picture"))
     return render_template("upload-picture.html", form=picture_form)
 
 
