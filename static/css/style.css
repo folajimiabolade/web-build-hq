@@ -529,7 +529,7 @@ a[type="button"].whatsapp {
     }
 
     h2.user-greeting {
-        margin-bottom: 4vh;
+        margin-bottom: 6vw;
         text-align: center;
     }
 
@@ -557,20 +557,20 @@ a[type="button"].whatsapp {
 
     h3.testimonies-heading {
         text-align: center;
-        margin-top: 6vh;
+        margin-top: 7vw;
+        margin-bottom: 1vw;
     }
 
     div.testimony-holder {
         display: flex;
         justify-content: center;
-        margin-bottom: 2vh;
     }
 
     div.testimony-unit{
         padding: 4.5vw 3vw;
         border: 3.75px solid rgba(231, 242, 228, 0.7);
         border-radius: 4vw;
-        margin: 3.5vh 3.5vw;
+        margin: 2.625vw 3.5vw;
         width: 66vw;
     }
 
