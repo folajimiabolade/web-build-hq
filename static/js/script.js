@@ -51,3 +51,29 @@ function detectChange(portraitState) {
 
 
 detectChange(screenOrientation);
+
+
+
+
+
+
+//$(".betan").click(function () {
+//    fetch("http://127.0.0.1:5000/flow/api").then(function (response) {
+//        return response.json();
+//    }).then(function (data) {
+//        $(".details-shower").html([
+//            ("Your first name is " + data["first name"] + ", your last name "),
+//            ("is " + data["last name"] + ", and your email is " + data["email"] + ", "),
+//            ("Your is image is " + "<img width='500vw' height='500vw' src='" + data["picture url"] + "'>" )
+//        ].join(""));
+//    })
+//})
+
+
+
+
+
+
+
+
+

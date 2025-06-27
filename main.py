@@ -1,7 +1,7 @@
 # Import necessary libraries and modules
 # flask creates the server that communicates with the users
 # https://flask.palletsprojects.com/en/stable/quickstart/
-from flask import Flask, render_template, redirect, url_for, request, flash
+from flask import Flask, render_template, redirect, url_for, request, flash, jsonify
 # os is where the secrets are saved, like developer passwords and api keys
 import os
 # Import forms from the forms.py file
@@ -106,9 +106,21 @@ def about():
     return render_template("about.html")
 
 
-@app.route("/flow")
-def flow():
-    return "This is Flow's access page."
+# @app.route("/flow")
+# @login_required
+# def flow():
+#     return render_template("flow.html")
+#
+#
+# @app.route("/flow/api")
+# @login_required
+# def flow_api():
+#     return jsonify({
+#         "first name": current_user.first_name,
+#         "last name": current_user.last_name,
+#         "email": current_user.email,
+#         "picture url": current_user.picture_url,
+#     })
 
 
 @app.route("/designs")
