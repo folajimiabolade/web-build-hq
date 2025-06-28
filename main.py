@@ -21,7 +21,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 # flask_login logs users in and out https://flask-login.readthedocs.io/en/latest/
 from flask_login import LoginManager, login_user, logout_user, UserMixin, login_required, current_user
 # The python datetime module is used for getting the time that comments were made
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 # API requests are made through the requests module
 import requests
 # load_dotenv loads data stored as environment variables(e.g. secrets like the developer passwords or api keys)
@@ -32,6 +32,10 @@ import cloudinary
 from cloudinary import CloudinaryImage
 import cloudinary.uploader
 import cloudinary.api
+# The random module is used to generate a random number
+import random
+# The simple-mail-transfer-protocol library(smtplib) is used send emails
+import smtplib
 
 
 class Base(DeclarativeBase):
@@ -56,6 +60,9 @@ url = os.environ.get("API-URL")
 i_d_ = os.environ.get("ID-INSTANCE")
 key = os.environ.get("API-TOKEN-INSTANCE")
 number = os.environ.get("NUMBER")
+
+email = os.environ.get("EMAIL")
+password = os.environ.get("PASSWORD")
 
 load_dotenv()
 
@@ -370,9 +377,22 @@ def delete_picture():
     return redirect(url_for("profile_picture"))
 
 
-# @app.route("/verify-email")
+# @app.route("/verify-email", methods=["GET", "POST"])
 # def verify_email():
 #     verify_form = VerifyForm()
+#     random_number = random.randint(100000, 999999)
+#     with smtplib.SMTP("smtp.gmail.com") as connection:
+#         connection.starttls()
+#         connection.login(email, password)
+#         connection.sendmail(
+#             from_addr=email,
+#             to_addrs=
+#         )
+#     current_time = datetime.now()
+#     if verify_form.validate_on_submit():
+#         data = request.form
+#         if datetime.now() < (current_time + timedelta(minutes=2)):
+#             if int(data["input"]) == random_number
 #     return render_template("verify-email.html", form=verify_form)
 
 
