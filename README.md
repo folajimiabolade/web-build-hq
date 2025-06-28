@@ -49,6 +49,7 @@ should display on your 'Profile Picture'
 page like this:
 
 ![Profile picture page](static/images/screenshots/Picture.jpg)
+
 Done! Now you can navigate back to 
 your 'Account' page.
 
@@ -63,6 +64,7 @@ on your dashboard, your 'Account' page
 should look like this:
 
 ![Account page with a comment](static/images/screenshots/Comment.jpg)
+
 You can add as many comments as you want!, 
 your comment should also show up on 
 the 'Comments' page, which you can 
