@@ -14,14 +14,13 @@ with SQLAlchemy, for the user-side,
 the structure was built with HTML,
 appearance was made using CSS styling
 (the icons and some of the buttons'
-colors were gotten from Bootstrap
-{https://getbootstrap.com}) and the
+colors were gotten from Bootstrap) and the
 animation was done using 
-JavaScript + jQuery(https://jquery.com),
+JavaScript + jQuery,
 the colors were gotten from 
-Color Hunt(https://colorhunt.co) and
+Color Hunt and
 fonts were gotten from 
-Google Fonts(https://fonts.google.com). 
+Google Fonts. 
 The application is run from the 
 "main.py" file.
 
