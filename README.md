@@ -31,14 +31,14 @@ https://webbuildhq.onrender.com, you
 should see a webpage that looks like 
 this screenshot:
 
-![Home page](static/images/screenshots/Home-x.jpg)
+![Home page](static/images/screenshots/Home.jpg)
 
 **Step 2**
 Sign up or login, after signing up or 
 logging in, you should be redirected to 
 your account page which looks like this:
 
-![Account page](static/images/screenshots/Account-x.jpg)
+![Account page](static/images/screenshots/Account.jpg)
 
 **Step 3**
 Click on the 'Profile Picture' button, 
@@ -47,7 +47,7 @@ upload your picture, then your picture
 should display on your 'Profile Picture' 
 page like this:
 
-![Profile picture page](static/images/screenshots/Picture-x.jpg)
+![Profile picture page](static/images/screenshots/Picture.jpg)
 
 Done! Now you can navigate back to 
 your 'Account' page.
@@ -62,7 +62,7 @@ the date and time it was made showing up
 on your dashboard, your 'Account' page 
 should look like this:
 
-![Account page with a comment](static/images/screenshots/Comment-x.jpg)
+![Account page with a comment](static/images/screenshots/Comment.jpg)
 
 You can add as many comments as you want!, 
 your comment should also show up on 
@@ -71,6 +71,6 @@ navigate to by clicking the 'Menu' button,
 then clicking the 'Comments' button, the 
 'Comments' page looks like this:
 
-![Comments section](static/images/screenshots/Comments-x.jpg)
+![Comments section](static/images/screenshots/Comments.jpg)
 
 
