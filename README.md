@@ -3,7 +3,7 @@ An application where you can add
 pictures and comments to.
 
 ## About
-WebBuildHQ is application where you
+WebBuildHQ is an application where you
 can add comments and pictures to, it
 was built with Python, the server
 that communicates with the users
