@@ -28,8 +28,7 @@ The application is run from the
 **Step 1**
 Visit the homepage 
 https://webbuildhq.onrender.com, you 
-should see a webpage that looks like 
-this screenshot:
+should see a webpage that looks like this:
 
 ![Home page](static/images/screenshots/Home.jpg)
 
