@@ -16,7 +16,7 @@ appearance was made using CSS styling
 (the icons and some of the buttons'
 colors were gotten from Bootstrap) and the
 animation was done using 
-JavaScript + jQuery,
+JavaScript and jQuery,
 the colors were gotten from 
 Color Hunt and
 fonts were gotten from 
