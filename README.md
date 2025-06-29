@@ -63,7 +63,7 @@ should look like this:
 
 ![Account page with a comment](static/images/screenshots/Comment.jpg)
 
-You can add as many comments as you want!, 
+You can add as many comments as you want! 
 your comment should also show up on 
 the 'Comments' page, which you can 
 navigate to by clicking the 'Menu' button, 
