@@ -15,8 +15,8 @@ the structure was built with HTML,
 appearance was made using CSS styling
 (the icons and some of the buttons'
 colors were gotten from Bootstrap) and the
-animation was done using 
-JavaScript + jQuery,
+animation was done with 
+JavaScript and jQuery,
 the colors were gotten from 
 Color Hunt and
 fonts were gotten from 
@@ -28,15 +28,14 @@ The application is run from the
 **Step 1**
 Visit the homepage 
 https://webbuildhq.onrender.com, you 
-should see a webpage that looks like 
-this screenshot:
+should see a webpage that looks like this:
 
 ![Home page](static/images/screenshots/Home.jpg)
 
 **Step 2**
 Sign up or login, after signing up or 
 logging in, you should be redirected to 
-your account page which looks like this:
+your 'Account' page which looks like this:
 
 ![Account page](static/images/screenshots/Account.jpg)
 
@@ -64,8 +63,8 @@ should look like this:
 
 ![Account page with a comment](static/images/screenshots/Comment.jpg)
 
-You can add as many comments as you want!, 
-your comment should also show up on 
+You can add as many comments as you want! 
+Your comment should also show up on 
 the 'Comments' page, which you can 
 navigate to by clicking the 'Menu' button, 
 then clicking the 'Comments' button, the 
