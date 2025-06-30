@@ -35,7 +35,7 @@ should see a webpage that looks like this:
 **Step 2**
 Sign up or login, after signing up or 
 logging in, you should be redirected to 
-your account page which looks like this:
+your 'Account' page which looks like this:
 
 ![Account page](static/images/screenshots/Account.jpg)
 
