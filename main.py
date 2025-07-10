@@ -396,5 +396,10 @@ def delete_picture():
 #     return render_template("verify-email.html", form=verify_form)
 
 
+# @app.route("/api/active")
+# def active():
+#     return jsonify({"status": "active"})
+
+
 if __name__ == "__main__":
     app.run(debug=True)
