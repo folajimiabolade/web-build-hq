@@ -2,6 +2,67 @@
 
 {% block title %}Privacy Policy{% endblock %}
 
+{% block head %}
+    <style>
+        div.privacy-house::before {
+            content: "policy";
+            color: transparent;
+            background-image: url( "{{ url_for('static', filename='images/signing-documents.jpg') }}" );
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            min-width: 100vw;
+            min-height: 100vh;
+            filter: brightness(0.2);
+        }
+    </style>
+{% endblock %}
+
 {% block body %}
-    <h2 class="text">This is the privacy policy page</h2>
+    <div class="privacy-house">
+        <h3 class="text">Privacy Policy</h3>
+        <p class="text">Effective Date: 14/06/2025</p>
+        <p class="text">Your privacy is important to WebBuildHQ. This Privacy Policy explains how WebBuildHQ collects, uses, and protects your information when you use this website.</p>
+        <h3 class="text">1. Information This Website Collects</h3>
+        <p class="text">WebBuildHQ collects the following information from users:</p>
+        <ul class="text">
+            <li>Full Name</li>
+            <li>Email Address</li>
+            <li>Password (stored securely using one-way hashing)</li>
+        </ul>
+        <h3 class="text">2. How WebBuildHQ Uses Your Information</h3>
+        <p class="text">WebBuildHQ uses the information you provide to:</p>
+        <ul class="text">
+            <li>Communicate with you about WebBuildHQ’s services</li>
+            <li>Respond to inquiries or support requests</li>
+        </ul>
+        <p class="text">WebBuildHQ does not sell, trade, or rent your personal information to others.</p>
+        <h3 class="text">3. Data Protection</h3>
+        <p class="text">Reasonable measures are taken to protect your personal information from unauthorized access, disclosure, or alteration. However, please be aware that no method of internet transmission or electronic storage is completely secure.</p>
+        <p class="text">Passwords are hashed using a secure, one-way hashing algorithm before being stored in WebBuildHQ’s database. This means WebBuildHQ never stores your actual password and cannot retrieve it in plain text.</p>
+        <h3 class="text">4. Third-Party Services</h3>
+        <p class="text">WebBuildHQ does not share your personal data with any third-party services.</p>
+        <h3 class="text">5. Your Rights</h3>
+        <p class="text">You have the right to:</p>
+        <ul class="text">
+            <li>Request access to the personal data held about you</li>
+            <li>Request correction or deletion of your data</li>
+            <li>Withdraw consent at any time, where applicable</li>
+        </ul>
+        <p class="text">To exercise these rights, please contact: webbuildhq@gmail.com</p>
+        <h3 class="text">6. Updates to This Policy</h3>
+        <p class="text">This Privacy Policy may be updated from time to time. Users are encouraged to check this page regularly for any changes.</p>
+        <h3 class="text">7. Contact</h3>
+        <p class="text">If you have any questions about this Privacy Policy, you can contact webbuildhq@gmail.com</p>
+        <h3 class="text">8. Cookies</h3>
+        <p class="text"> WebBuildHQ uses cookies to manage user sessions. These cookies are essential for the operation of the site and are used to keep users logged in securely.</p>
+        <p class="text">WebBuildHQ does not use cookies for tracking, advertising, or analytics. By using this site, you consent to the use of cookies to enhance your user experience.</p>
+        <p class="text">You can choose to disable cookies through your browser settings, but some parts of the site may not function properly as a result.</p>
+
+
+    </div>
 {% endblock %}

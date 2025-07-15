@@ -203,9 +203,9 @@ def login():
     return render_template("login.html", form=login_form)
 
 
-# @app.route("/privacy-policy")
-# def privacy_policy():
-#     return render_template("privacy-policy.html")
+@app.route("/privacy-policy")
+def privacy_policy():
+    return render_template("privacy-policy.html")
 
 
 @app.route("/account")
